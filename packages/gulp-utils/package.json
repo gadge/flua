@@ -1,0 +1,41 @@
+{
+  "name": "@flua/gulp-utils",
+  "version": "0.0.0",
+  "description": "gulp utils",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "pub": "npm publish",
+    "test": "node -r @babel/register test/vinyl-init.test.js"
+  },
+  "dependencies": {
+    "ora": "^4.0.3",
+    "@palett/cards": "^0.1.0",
+    "@palett/dye": "^0.1.0",
+    "@palett/convert": "^0.1.0",
+    "@valjoux/timeout": "^0.0.5",
+    "@valjoux/timestamp": "^0.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoyeungw/flua.git"
+  },
+  "keywords": [
+    "gulp",
+    "vinyl",
+    "stream",
+    "buffer"
+  ],
+  "author": "Hoyeung Wong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hoyeungw/flua"
+  },
+  "homepage": "https://github.com/hoyeungw/flua#readme"
+}
