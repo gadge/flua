@@ -20,6 +20,7 @@ export class TableGulp {
   }
   get table () { return this.#table }
   set table (value) { Object.assign(this.#table, value |> matchSlice) }
+
   static build ({ src, dest, table = {} }) {
     ({ src, dest }) |> deca({ wo: 128 }) |> says['TableGulp'].p('build')
     return new TableGulp(src, dest, table)
@@ -40,15 +41,15 @@ export class TableGulp {
     })
   }
 
-  TableLookup (key, field) {
+  TableLookup ({ key, field, filename }) {
     const { dest, table } = this
-    const method = vinylizeTableLookup.bind({ dest, table, key, field })
+    const method = vinylizeTableLookup.bind({ dest, table, key, field, filename })
     return rename(method, says.roster(key) + ' -> ' + says.roster(field))
   }
 
-  TableChips (key, field, mode) {
+  TableChips ({ key, field, mode, filename }) {
     const { dest, table } = this
-    const method = vinylizeTableChips.bind({ dest, table, key, field, mode })
+    const method = vinylizeTableChips.bind({ dest, table, key, field, mode, filename })
     return rename(method, says.roster(key) + ' -> ' + says.roster(field))
   }
 }

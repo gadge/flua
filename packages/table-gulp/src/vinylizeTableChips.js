@@ -1,9 +1,9 @@
 import gulp from 'gulp'
-import { wordsToPascal } from '@spare/phrasing'
+import { vinylize } from '@flua/vinylize'
+import { ACCUM } from '@analys/enum-pivot-mode'
 import { Verse } from '@spare/verse'
 import { Table } from '@analys/table'
-import { ACCUM } from '@analys/enum-pivot-mode'
-import { vinylize } from '@flua/vinylize'
+import { wordsToPascal } from '@spare/phrasing'
 
 export const vinylizeTableChips = function () {
   /** @type {string} */ const dest = this.dest // if provided, save to dest/filename. if omitted, return vinyl buffer.

@@ -12,13 +12,13 @@ var logger = require('@spare/logger');
 var says = require('@palett/says');
 var rename = require('@vect/rename');
 var gulp = _interopDefault(require('gulp'));
-var phrasing = require('@spare/phrasing');
-var verse = require('@spare/verse');
-var enumPivotMode = require('@analys/enum-pivot-mode');
 var vinylize = require('@flua/vinylize');
-var numStrict = require('@typen/num-strict');
+var enumPivotMode = require('@analys/enum-pivot-mode');
+var verse = require('@spare/verse');
+var phrasing = require('@spare/phrasing');
 var enumDataTypes = require('@typen/enum-data-types');
 var enumObjectTypes = require('@typen/enum-object-types');
+var numStrict = require('@typen/num-strict');
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -201,7 +201,11 @@ class TableGulp {
     });
   }
 
-  TableLookup(key, field) {
+  TableLookup({
+    key,
+    field,
+    filename
+  }) {
     const {
       dest,
       table
@@ -210,12 +214,18 @@ class TableGulp {
       dest,
       table,
       key,
-      field
+      field,
+      filename
     });
     return rename.rename(method, says.says.roster(key) + ' -> ' + says.says.roster(field));
   }
 
-  TableChips(key, field, mode) {
+  TableChips({
+    key,
+    field,
+    mode,
+    filename
+  }) {
     const {
       dest,
       table
@@ -225,7 +235,8 @@ class TableGulp {
       table,
       key,
       field,
-      mode
+      mode,
+      filename
     });
     return rename.rename(method, says.says.roster(key) + ' -> ' + says.says.roster(field));
   }

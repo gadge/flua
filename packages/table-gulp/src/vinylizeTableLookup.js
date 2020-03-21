@@ -1,10 +1,10 @@
 import gulp from 'gulp'
+import { vinylize } from '@flua/vinylize'
 import { Verse } from '@spare/verse'
-import { wordsToPascal } from '@spare/phrasing'
-import { inferType, isNumeric } from '@typen/num-strict'
 import { NUM, STR } from '@typen/enum-data-types'
 import { ARRAY } from '@typen/enum-object-types'
-import { vinylize } from '@flua/vinylize'
+import { inferType, isNumeric } from '@typen/num-strict'
+import { wordsToPascal } from '@spare/phrasing'
 
 export const vinylizeTableLookup = function () {
   /** @type {string} */ const dest = this.dest // if provided, save to dest/filename. if omitted, return vinyl buffer.

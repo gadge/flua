@@ -25,7 +25,7 @@
 #### Install
 
 ```console
-$ npm install @flua/<tool-name>
+$ npm install @flua/<tool-rename>
 ```
 
 #### Tools

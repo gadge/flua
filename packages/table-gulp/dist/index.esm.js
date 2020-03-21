@@ -6,13 +6,13 @@ import { deca } from '@spare/logger';
 import { says } from '@palett/says';
 import { rename } from '@vect/rename';
 import gulp from 'gulp';
-import { wordsToPascal } from '@spare/phrasing';
-import { Verse } from '@spare/verse';
-import { ACCUM } from '@analys/enum-pivot-mode';
 import { vinylize } from '@flua/vinylize';
-import { isNumeric, inferType } from '@typen/num-strict';
+import { ACCUM } from '@analys/enum-pivot-mode';
+import { Verse } from '@spare/verse';
+import { wordsToPascal } from '@spare/phrasing';
 import { NUM, STR } from '@typen/enum-data-types';
 import { ARRAY } from '@typen/enum-object-types';
+import { isNumeric, inferType } from '@typen/num-strict';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -195,7 +195,11 @@ class TableGulp {
     });
   }
 
-  TableLookup(key, field) {
+  TableLookup({
+    key,
+    field,
+    filename
+  }) {
     const {
       dest,
       table
@@ -204,12 +208,18 @@ class TableGulp {
       dest,
       table,
       key,
-      field
+      field,
+      filename
     });
     return rename(method, says.roster(key) + ' -> ' + says.roster(field));
   }
 
-  TableChips(key, field, mode) {
+  TableChips({
+    key,
+    field,
+    mode,
+    filename
+  }) {
     const {
       dest,
       table
@@ -219,7 +229,8 @@ class TableGulp {
       table,
       key,
       field,
-      mode
+      mode,
+      filename
     });
     return rename(method, says.roster(key) + ' -> ' + says.roster(field));
   }

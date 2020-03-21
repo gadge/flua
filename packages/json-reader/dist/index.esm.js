@@ -8,9 +8,9 @@ class JsonReader {
   static table({
     table,
     src,
-    raw
+    filename
   }) {
-    return gulp.src(src + '/' + raw).pipe(tap(file => {
+    return gulp.src(src + '/' + filename).pipe(tap(file => {
       var _JSON$parse;
 
       const {
@@ -27,15 +27,15 @@ class JsonReader {
   static TableReader({
     table,
     src,
-    raw,
-    name
+    filename,
+    rename: rename$1
   }) {
     const method = tableReader.bind({
       table,
       src,
-      raw
+      filename
     });
-    return name ? rename(method, name) : method;
+    return rename$1 ? rename(method, rename$1) : method;
   }
 
 }
@@ -44,9 +44,9 @@ class JsonReaderAsync {
   static async table({
     table,
     src,
-    raw
+    filename
   }) {
-    return await promises.readFile(process.cwd() + '/' + src + '/' + raw).then(source => {
+    return await promises.readFile(process.cwd() + '/' + src + '/' + filename).then(source => {
       var _JSON$parse;
 
       const {
@@ -67,9 +67,9 @@ const tableReader$1 = function () {
   const {
     table,
     src,
-    raw
+    filename
   } = this;
-  return gulp.src(src + '/' + raw).pipe(tap(file => {
+  return gulp.src(src + '/' + filename).pipe(tap(file => {
     var _JSON$parse;
 
     const {
