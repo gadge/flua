@@ -2,42 +2,21 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const vinylize = function (i, j) {
-  const temp = this[i];
-  this[i] = this[j];
-  return this[j] = temp;
-};
-const Swap = vec => vinylize.bind(vec);
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-/**
- * Insert element at current(c) position to projected(next(n)) position.
- * s.t. c <= n
- * @param c
- * @param n
- */
-const insertUp = function (c, n) {
-  const t = this[c];
+var source = _interopDefault(require('vinyl-source-stream'));
+var vinylBuffer = _interopDefault(require('vinyl-buffer'));
+var size = _interopDefault(require('gulp-size'));
 
-  while (c < n) this[c] = this[++c]; // moves forward
+const vinylize = (filename, ...contents) => {
+  const stream = source(filename);
 
+  for (let element of contents) stream.write(element);
 
-  return this[n] = t;
-};
-/**
- * Insert element at current(c) position to projected(previous(n)) position.
- * s.t. p <= c
- */
-
-const insertDown = function (c, p) {
-  const t = this[c];
-
-  while (c > p) this[c] = this[--c]; // moves backward
-
-
-  return this[p] = t;
+  stream.end();
+  return stream.pipe(vinylBuffer()).pipe(size({
+    title: filename
+  }));
 };
 
-exports.Swap = Swap;
-exports.insertDown = insertDown;
-exports.insertUp = insertUp;
 exports.vinylize = vinylize;

@@ -1,5 +1,5 @@
 {
-  "name": "@flua/vinylize",
+  "name": "@flua/table-gulp",
   "version": "0.0.0",
   "description": "Swap values at a pair of indexes",
   "main": "dist/index.cjs.js",
@@ -12,12 +12,25 @@
   },
   "scripts": {
     "pub": "npm publish",
-    "test": "node -r @babel/register test/vinylize.test.js"
+    "test": "node -r @babel/register test/table-gulp.test.js"
   },
   "dependencies": {
-    "vinyl-source-stream": "^2.0.0",
-    "vinyl-buffer":"^1.0.1",
-    "gulp-size": "^3.0.0"
+    "gulp": "^4.0.2",
+    "del": "^5.1.0",
+    "@analys/enum-pivot-mode": "^0.1.3",
+    "@analys/table-init": "^0.1.2",
+    "@analys/table": "^0.1.3",
+    "@flua/vinylize": "^0.0.0",
+    "@flua/json-reader": "^0.0.0",
+    "@palett/says": "^0.1.0",
+    "@spare/enum-chars": "^0.2.1",
+    "@spare/logger": "^0.2.3",
+    "@spare/phrasing": "^0.2.1",
+    "@spare/verse": "^0.2.2",
+    "@typen/enum-data-types": "^0.0.3",
+    "@typen/enum-object-types": "^0.0.3",
+    "@typen/num-strict": "^0.0.3",
+    "@vect/rename": "^0.2.0"
   },
   "repository": {
     "type": "git",

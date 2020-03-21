@@ -1,7 +1,7 @@
 {
-  "name": "@flua/gulp-utils",
+  "name": "@flua/utils",
   "version": "0.0.0",
-  "description": "gulp utils",
+  "description": "fs/stream utils",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "files": [

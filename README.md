@@ -2,7 +2,7 @@
 	<img src="media/logo.default.png" />
 </div>
 
-##### :clubs: @glossa, easy to use array, 2d-array, entries and objects
+##### :clubs: @flua, easy to use array, 2d-array, entries and objects
 
 [![npm version][badge-npm-version]][url-npm]
 [![github commit last][badge-github-last-commit]][url-github]
@@ -10,14 +10,14 @@
 [![npm license][badge-npm-license]][url-npm]
 
 [//]: <> (Shields)
-[badge-npm-version]: https://flat.badgen.net/npm/v/@glossa/glossaor
-[badge-npm-license]: https://flat.badgen.net/npm/license/@glossa/glossaor
-[badge-github-last-commit]: https://flat.badgen.net/github/last-commit/hoyeungw/glossa
-[badge-github-commit-count]: https://flat.badgen.net/github/commits/hoyeungw/glossa
+[badge-npm-version]: https://flat.badgen.net/npm/v/@flua/vinylize
+[badge-npm-license]: https://flat.badgen.net/npm/license/@flua/vinylize
+[badge-github-last-commit]: https://flat.badgen.net/github/last-commit/hoyeungw/flua
+[badge-github-commit-count]: https://flat.badgen.net/github/commits/hoyeungw/flua
 
 [//]: <> (Link)
-[url-github]: https://github.com/hoyeungw/glossa
-[url-npm]: https://npmjs.org/package/@glossa/glossaor
+[url-github]: https://github.com/hoyeungw/flua
+[url-npm]: https://npmjs.org/package/@flua/vinylize
 
 #### Features
 - A collection of terms
@@ -25,28 +25,28 @@
 #### Install
 
 ```console
-$ npm install @glossa/<tool-name>
+$ npm install @flua/<tool-name>
 ```
 
 #### Tools
 |                                                            |                                    |            |                       |
 | ---------------------------------------------------------- | ---------------------------------- | ---------- |---------------------- |
-| [**glossaor**](packages/pkg-core/glossaor)                     | Functions for 1d-array(glossaor)     | core       |![v][glossaor-dm]        |
+| [**vinylize**](packages/pkg-core/vinylize)                     | Functions for 1d-array(vinylize)     | core       |![v][vinylize-dm]        |
 | [**matrix**](packages/pkg-core/matrix)                     | Functions for 2d-array(matrix)     | core       |![v][matrix-dm]        |
 | [**column**](packages/pkg-core/column)                     | Functions for matrix column        | core       |![v][column-dm]        |
 | [**entries**](packages/pkg-core/entries)                   | Functions for entries              | core       |![v][entries-dm]       |
 |                                                            |                                    |            |                       |
 
 [//]: <> (Local routes)
-[glossaor-dm]: https://flat.badgen.net/npm/dm/@glossa/glossaor
-[matrix-dm]: https://flat.badgen.net/npm/dm/@glossa/matrix
-[column-dm]: https://flat.badgen.net/npm/dm/@glossa/column
-[entries-dm]: https://flat.badgen.net/npm/dm/@glossa/entries
+[vinylize-dm]: https://flat.badgen.net/npm/dm/@flua/vinylize
+[matrix-dm]: https://flat.badgen.net/npm/dm/@flua/matrix
+[column-dm]: https://flat.badgen.net/npm/dm/@flua/column
+[entries-dm]: https://flat.badgen.net/npm/dm/@flua/entries
 
 #### Mappers
 |                                                            |                                    |            |                       |
 | ---------------------------------------------------------- | ---------------------------------- | ---------- |---------------------- |
-| [**glossaor-mapper**](packages/pkg-mapper/glossaor-mapper)     | Mapper/iterate for glossaor          | mapper     |![v][glossaor-mapper-dm] |
+| [**vinylize-mapper**](packages/pkg-mapper/vinylize-mapper)     | Mapper/iterate for vinylize          | mapper     |![v][vinylize-mapper-dm] |
 | [**matrix-mapper**](packages/pkg-mapper/matrix-mapper)     | Mapper/iterate for matrix elements | mapper     |![v][matrix-mapper-dm] |
 | [**column-mapper**](packages/pkg-mapper/column-mapper)     | Mapper/iterate for matrix column   | mapper     |![v][column-mapper-dm] |
 | [**columns-mapper**](packages/pkg-mapper/columns-mapper)   | Mapper/iterate for matrix columns  | mapper     |![v][columns-mapper-dm]|
@@ -55,17 +55,17 @@ $ npm install @glossa/<tool-name>
 |                                                            |                                    |            |                       |
 
 [//]: <> (Local routes)
-[glossaor-mapper-dm]: https://flat.badgen.net/npm/dm/@glossa/glossaor-mapper
-[matrix-mapper-dm]: https://flat.badgen.net/npm/dm/@glossa/matrix-mapper
-[column-mapper-dm]: https://flat.badgen.net/npm/dm/@glossa/column-mapper
-[columns-mapper-dm]: https://flat.badgen.net/npm/dm/@glossa/columns-mapper
-[entries-mapper-dm]: https://flat.badgen.net/npm/dm/@glossa/entries-mapper
-[object-mapper-dm]: https://flat.badgen.net/npm/dm/@glossa/object-mapper
+[vinylize-mapper-dm]: https://flat.badgen.net/npm/dm/@flua/vinylize-mapper
+[matrix-mapper-dm]: https://flat.badgen.net/npm/dm/@flua/matrix-mapper
+[column-mapper-dm]: https://flat.badgen.net/npm/dm/@flua/column-mapper
+[columns-mapper-dm]: https://flat.badgen.net/npm/dm/@flua/columns-mapper
+[entries-mapper-dm]: https://flat.badgen.net/npm/dm/@flua/entries-mapper
+[object-mapper-dm]: https://flat.badgen.net/npm/dm/@flua/object-mapper
 
 #### Zippers
 |                                                            |                                    |            |                       |
 | ---------------------------------------------------------- | ---------------------------------- | ---------- |---------------------- |
-| [**glossaor-zipper**](packages/pkg-zipper/glossaor-zipper)     | Zipper for glossaor                  | zipper     |![v][glossaor-zipper-dm] |
+| [**vinylize-zipper**](packages/pkg-zipper/vinylize-zipper)     | Zipper for vinylize                  | zipper     |![v][vinylize-zipper-dm] |
 | [**matrix-zipper**](packages/pkg-zipper/matrix-zipper)     | Zipper for matrix elements         | zipper     |![v][matrix-zipper-dm] |
 | [**column-zipper**](packages/pkg-zipper/column-zipper)     | Zipper for matrix column           | zipper     |![v][column-zipper-dm] |
 | [**columns-zipper**](packages/pkg-zipper/columns-zipper)   | Zipper for matrix columns          | zipper     |![v][columns-zipper-dm]|
@@ -74,15 +74,15 @@ $ npm install @glossa/<tool-name>
 |                                                            |                                    |            |                       |
 
 [//]: <> (Local routes)
-[glossaor-zipper-dm]: https://flat.badgen.net/npm/dm/@glossa/glossaor-zipper
-[matrix-zipper-dm]: https://flat.badgen.net/npm/dm/@glossa/matrix-zipper
-[column-zipper-dm]: https://flat.badgen.net/npm/dm/@glossa/column-zipper
-[columns-zipper-dm]: https://flat.badgen.net/npm/dm/@glossa/columns-zipper
-[entries-zipper-dm]: https://flat.badgen.net/npm/dm/@glossa/entries-zipper
-[object-zipper-dm]: https://flat.badgen.net/npm/dm/@glossa/object-zipper                                              |                                    |            |                       |
+[vinylize-zipper-dm]: https://flat.badgen.net/npm/dm/@flua/vinylize-zipper
+[matrix-zipper-dm]: https://flat.badgen.net/npm/dm/@flua/matrix-zipper
+[column-zipper-dm]: https://flat.badgen.net/npm/dm/@flua/column-zipper
+[columns-zipper-dm]: https://flat.badgen.net/npm/dm/@flua/columns-zipper
+[entries-zipper-dm]: https://flat.badgen.net/npm/dm/@flua/entries-zipper
+[object-zipper-dm]: https://flat.badgen.net/npm/dm/@flua/object-zipper                                              |                                    |            |                       |
 
 [//]: <> (Local routes)
-[callable-dm]: https://flat.badgen.net/npm/dm/@glossa/glossaor-mapper
+[callable-dm]: https://flat.badgen.net/npm/dm/@flua/vinylize-mapper
 
 #### Meta
 [LICENSE (MIT)](LICENSE)
