@@ -1,5 +1,5 @@
 {
-  "name": "@flua/table-gulp",
+  "name": "@flua/gulp-init",
   "version": "0.0.3",
   "description": "Swap values at a pair of indexes",
   "main": "dist/index.cjs.js",
@@ -12,25 +12,14 @@
   },
   "scripts": {
     "pub": "npm publish",
-    "test": "node -r @babel/register test/table-gulp.test.js"
+    "test": "node -r @babel/register test/gulp-init.test.js"
   },
   "dependencies": {
-    "gulp": "^4.0.2",
-    "del": "^5.1.0",
-    "@analys/enum-pivot-mode": "^0.1.3",
-    "@analys/table": "^0.1.3",
     "@analys/table-init": "^0.1.2",
-    "@flua/utils": "^0.0.3",
-    "@flua/vinylize": "^0.0.3",
-    "@flua/gulp-init": "^0.0.3",
-    "@palett/says": "^0.1.0",
     "@spare/enum-chars": "^0.3.0",
-    "@spare/logger": "^0.3.0",
-    "@spare/phrasing": "^0.3.0",
-    "@spare/verse": "^0.3.0",
-    "@typen/enum-data-types": "^0.0.3",
-    "@typen/enum-object-types": "^0.0.3",
-    "@vect/rename": "^0.2.0"
+    "@vect/rename": "^0.2.0",
+    "gulp": "^4.0.2",
+    "gulp-tap": "^2.0.0"
   },
   "repository": {
     "type": "git",

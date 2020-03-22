@@ -28,20 +28,22 @@ const asyncLog = async (file) => {
   return await file
 }
 
-fs.createReadStream(SRC + '/sample.json')
-  .pipe(through2.obj(
-    function (chunk, encoding, callback) {
-      const body = JSON.parse(chunk)
-      const info = {
-        body,
-        encoding,
-        callback
+const throughTest = () => {
+  fs.createReadStream(SRC + '/sample.json')
+    .pipe(through2.obj(
+      function (chunk, encoding, callback) {
+        const body = JSON.parse(chunk)
+        const info = {
+          body,
+          encoding,
+          callback
+        }
+        info |> deco |> says['through2']
+        callback(null, Buffer.from(Verse.entriesAsObject(Object.entries(info))))
       }
-      info |> deco |> says['through2']
-      callback(null, Buffer.from(Verse.entriesAsObject(Object.entries(info))))
-    }
-  ))
-  .pipe(fs.createWriteStream(DEST + '/wut.txt'))
+    ))
+    .pipe(fs.createWriteStream(DEST + '/wut.txt'))
+}
 
 export const main = () => gulp
   .src([SRC + '/*.json'])

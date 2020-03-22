@@ -1,5 +1,6 @@
 import gulp from 'gulp'
 import { vinylize } from '@flua/vinylize'
+import { esvar } from '@flua/utils'
 import { ACCUM } from '@analys/enum-pivot-mode'
 import { Verse } from '@spare/verse'
 import { Table } from '@analys/table'
@@ -15,10 +16,10 @@ export const vinylizeTableChips = function () {
 
   const chips = table.chips({ key, field, mode, objectify: false })
   const vinylBuffer = vinylize(filename + '.js',
-    `export const ${filename} = `,
+    esvar(filename),
     Verse.entriesAsObject(chips, {
-      keyAbstract: x => '\'' + x + '\'',
-      abstract: Verse.vector,
+      keyRead: x => '\'' + x + '\'',
+      read: Verse.vector,
       quote: null,
     }))
   return dest

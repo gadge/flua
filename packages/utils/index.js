@@ -1,2 +1,3 @@
 export { filename } from './src/filename'
-export { waitSpin } from './src/waitSpin'
+export { waitSpin, greyNow } from './src/waitSpin'
+export { esvar } from './src/esvar'

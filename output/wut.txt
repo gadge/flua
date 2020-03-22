@@ -1,5 +1,0 @@
-{
-      body: [object Object],
-  encoding: 'utf8',
-  callback: function () { [native code] },
-}

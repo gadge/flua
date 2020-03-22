@@ -7,10 +7,10 @@ import { roughlyNow } from '@valjoux/timestamp'
 
 const spn = ora()
 const dye = Dye(Grey.darken_3 |> hexToRgb)
-export const greyNowTime = () => '[' + dye(roughlyNow()) + '] '
+export const greyNow = () => '[' + dye(roughlyNow()) + '] '
 
 export const waitSpin = async (ms, message) => {
   spn.start(message)
   await timeout(ms)
-  spn.succeed(greyNowTime())
+  spn.succeed(greyNow())
 }

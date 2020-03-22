@@ -11,11 +11,13 @@ const filename = path => basename(path, extname(path));
 var _Grey$darken_;
 const spn = ora();
 const dye = Dye((_Grey$darken_ = Grey.darken_3, hexToRgb(_Grey$darken_)));
-const greyNowTime = () => '[' + dye(roughlyNow()) + '] ';
+const greyNow = () => '[' + dye(roughlyNow()) + '] ';
 const waitSpin = async (ms, message) => {
   spn.start(message);
   await timeout(ms);
-  spn.succeed(greyNowTime());
+  spn.succeed(greyNow());
 };
 
-export { filename, waitSpin };
+const esvar = varname => `export const ${varname} = `;
+
+export { esvar, filename, greyNow, waitSpin };

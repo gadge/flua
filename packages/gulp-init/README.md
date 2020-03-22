@@ -1,4 +1,4 @@
-# @flua/target-gulp
+# @flua/gulp-init
 
 [![npm version][badge-npm-version]][url-npm]
 [![npm download monthly][badge-npm-download-monthly]][url-npm]
@@ -10,18 +10,18 @@
 [![github commit total][badge-github-commit-count]][url-github]
 
 [//]: <> (Shields)
-[badge-npm-version]: https://flat.badgen.net/npm/v/@flua/target-gulp
-[badge-npm-download-monthly]: https://flat.badgen.net/npm/dm/@flua/target-gulp
-[badge-npm-download-total]:https://flat.badgen.net/npm/dt/@flua/target-gulp
-[badge-npm-dependents]: https://flat.badgen.net/npm/dependents/@flua/target-gulp
-[badge-npm-license]: https://flat.badgen.net/npm/license/@flua/target-gulp
-[badge-pp-install-size]: https://flat.badgen.net/packagephobia/install/@flua/target-gulp
+[badge-npm-version]: https://flat.badgen.net/npm/v/@flua/gulp-init
+[badge-npm-download-monthly]: https://flat.badgen.net/npm/dm/@flua/gulp-init
+[badge-npm-download-total]:https://flat.badgen.net/npm/dt/@flua/gulp-init
+[badge-npm-dependents]: https://flat.badgen.net/npm/dependents/@flua/gulp-init
+[badge-npm-license]: https://flat.badgen.net/npm/license/@flua/gulp-init
+[badge-pp-install-size]: https://flat.badgen.net/packagephobia/install/@flua/gulp-init
 [badge-github-last-commit]: https://flat.badgen.net/github/last-commit/hoyeungw/flua
 [badge-github-commit-count]: https://flat.badgen.net/github/commits/hoyeungw/flua
 
 [//]: <> (Link)
-[url-npm]: https://npmjs.org/package/@flua/target-gulp
-[url-pp]: https://packagephobia.now.sh/result?p=@flua/target-gulp
+[url-npm]: https://npmjs.org/package/@flua/gulp-init
+[url-pp]: https://packagephobia.now.sh/result?p=@flua/gulp-init
 [url-github]: https://github.com/hoyeungw/flua
 
 ##### Swap 2 elements of array by input indexes
@@ -31,7 +31,7 @@
 
 #### Install
 ```console
-$ npm install @flua/target-gulp
+$ npm install @flua/gulp-init
 ```
 
 #### Usage

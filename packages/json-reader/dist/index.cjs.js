@@ -2,86 +2,32 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
-var rename = require('@vect/rename');
-var gulp = _interopDefault(require('gulp'));
-var tap = _interopDefault(require('gulp-tap'));
-var tableInit = require('@analys/table-init');
 var fs = require('fs');
 
-const tableReader = function () {
-  const {
-    table,
+async function loadObject() {
+  let {
+    base,
     src,
     filename
   } = this;
-  return gulp.src(src + '/' + filename).pipe(tap(file => {
-    var _JSON$parse;
-
-    const {
-      head,
-      rows
-    } = (_JSON$parse = JSON.parse(file.contents), tableInit.matchSlice(_JSON$parse));
-    if (head && rows) Object.assign(table, {
-      head,
-      rows
-    });
-  }));
-};
-
-class JsonReader {
-  static table({
-    table,
-    src,
-    filename
-  }) {
-    return tableReader.call({
-      table,
-      src,
-      filename
-    });
-  }
-
-  static TableReader({
-    table,
-    src,
-    filename,
-    rename: rename$1
-  }) {
-    const method = tableReader.bind({
-      table,
-      src,
-      filename
-    });
-    return rename$1 ? rename.rename(method, rename$1) : method;
-  }
-
+  if (base) src = base + '/' + src;
+  return await fs.promises.readFile(src + '/' + filename).then(source => JSON.parse(source.toString()));
 }
 
-class JsonReaderAsync {
-  static async table({
-    table,
+class JsonReader {
+  static async load({
+    base,
     src,
     filename
-  }) {
-    return await fs.promises.readFile(process.cwd() + '/' + src + '/' + filename).then(source => {
-      var _JSON$parse;
-
-      const {
-        head,
-        rows
-      } = (_JSON$parse = JSON.parse(source.toString()), tableInit.matchSlice(_JSON$parse));
-      Object.assign(table, {
-        head,
-        rows
-      });
-      return table;
+  } = {}) {
+    return loadObject.call({
+      base,
+      src,
+      filename
     });
   }
 
 }
 
 exports.JsonReader = JsonReader;
-exports.JsonReaderAsync = JsonReaderAsync;
-exports.tableReader = tableReader;
+exports.loadObject = loadObject;

@@ -1,18 +1,18 @@
 import del from 'del';
-import { JsonReader } from '@flua/json-reader';
+import { AssignTable } from '@flua/gulp-init';
 import { Table } from '@analys/table';
 import { matchSlice } from '@analys/table-init';
 import { deca } from '@spare/logger';
 import { says } from '@palett/says';
-import { rename } from '@vect/rename';
+import { Rename } from '@vect/rename';
 import gulp from 'gulp';
 import { vinylize } from '@flua/vinylize';
+import { esvar } from '@flua/utils';
 import { ACCUM } from '@analys/enum-pivot-mode';
 import { Verse } from '@spare/verse';
 import { wordsToPascal } from '@spare/phrasing';
-import { NUM, STR } from '@typen/enum-data-types';
+import { STR, NUM, OBJ } from '@typen/enum-data-types';
 import { ARRAY } from '@typen/enum-object-types';
-import { isNumeric, inferType } from '@typen/num-strict';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -88,14 +88,35 @@ const vinylizeTableChips = function () {
     mode,
     objectify: false
   });
-  const vinylBuffer = vinylize(filename + '.js', `export const ${filename} = `, Verse.entriesAsObject(chips, {
-    keyAbstract: x => '\'' + x + '\'',
-    abstract: Verse.vector,
+  const vinylBuffer = vinylize(filename + '.js', esvar(filename), Verse.entriesAsObject(chips, {
+    keyRead: x => '\'' + x + '\'',
+    read: Verse.vector,
     quote: null
   }));
   return dest ? vinylBuffer.pipe(gulp.dest(dest)) : vinylBuffer;
 }; // x => isNumeric(x) ? '\'' + x + '\'' : x,
 // x => isNumeric(x) ? +x : x.replace('\'', '\\\'')
+
+/**
+ *
+ * @type {Function|function(*):string}
+ */
+const protoType = Function.prototype.call.bind(Object.prototype.toString);
+/**
+ * const rxObj = /^\[object (.*)]$/
+ * Equivalent to: Object.prototype.stringify.call(o).match(rxObj)[1]
+ * @param {*} o
+ * @return {string}
+ */
+
+const typ = o => protoType(o).slice(8, -1);
+
+const isNumeric = x => !isNaN(x - parseFloat(x));
+
+const inferType = x => {
+  const t = typeof x;
+  return t === STR ? isNumeric(x) ? NUM : STR : t === OBJ ? typ(x) : t;
+};
 
 const vinylizeTableLookup = function () {
   /** @type {string} */
@@ -114,9 +135,8 @@ const vinylizeTableLookup = function () {
 
   const filename = this.filename || wordsToPascal([key, 'to', field]).join('');
   const entries = Object.entries(table.lookupTable(key, field));
-  const vinylBuffer = vinylize(filename + '.js', `export const ${filename} = `, Verse.entriesAsObject(entries, {
-    keyAbstract: x => isNumeric(x) ? '\'' + x + '\'' : x,
-    abstract: x => {
+  const vinylBuffer = vinylize(filename + '.js', esvar(filename), Verse.entriesAsObject(entries, {
+    read: x => {
       const t = inferType(x);
       if (t === NUM) return +x;
       if (t === STR) return '\'' + x.replace('\'', '\\\'') + '\'';
@@ -177,9 +197,9 @@ class TableGulp {
   }
 
   CleanDest() {
-    const clean = () => del([this.dest]);
+    var _ref2;
 
-    return rename(clean, says.roster('clean') + ' ' + this.dest);
+    return _ref2 = () => del([this.dest]), Rename(says.roster('clean') + ' ' + this.dest)(_ref2);
   }
 
   Read(filename) {
@@ -187,31 +207,34 @@ class TableGulp {
       src,
       table
     } = this;
-    return JsonReader.TableReader({
-      table,
+    return AssignTable({
+      target: table,
       src,
-      raw: filename,
-      name: says.roster('read') + ' ' + filename
+      filename,
+      rename: says.roster('read') + ' ' + filename
     });
   }
 
   TableLookup({
     key,
     field,
-    filename
+    filename,
+    readKey,
+    readField
   }) {
+    var _vinylizeTableLookup$;
+
     const {
       dest,
       table
     } = this;
-    const method = vinylizeTableLookup.bind({
+    return _vinylizeTableLookup$ = vinylizeTableLookup.bind({
       dest,
       table,
       key,
       field,
       filename
-    });
-    return rename(method, says.roster(key) + ' -> ' + says.roster(field));
+    }), Rename(says.roster(key) + ' -> ' + says.roster(field))(_vinylizeTableLookup$);
   }
 
   TableChips({
@@ -220,19 +243,20 @@ class TableGulp {
     mode,
     filename
   }) {
+    var _vinylizeTableChips$b;
+
     const {
       dest,
       table
     } = this;
-    const method = vinylizeTableChips.bind({
+    return _vinylizeTableChips$b = vinylizeTableChips.bind({
       dest,
       table,
       key,
       field,
       mode,
       filename
-    });
-    return rename(method, says.roster(key) + ' -> ' + says.roster(field));
+    }), Rename(says.roster(key) + ' -> ' + says.roster(field))(_vinylizeTableChips$b);
   }
 
 }

@@ -17,12 +17,16 @@ const filename = path$1 => path.basename(path$1, path.extname(path$1));
 var _Grey$darken_;
 const spn = ora();
 const dye = dye$1.Dye((_Grey$darken_ = cards.Grey.darken_3, convert.hexToRgb(_Grey$darken_)));
-const greyNowTime = () => '[' + dye(timestamp.roughlyNow()) + '] ';
+const greyNow = () => '[' + dye(timestamp.roughlyNow()) + '] ';
 const waitSpin = async (ms, message) => {
   spn.start(message);
   await timeout.timeout(ms);
-  spn.succeed(greyNowTime());
+  spn.succeed(greyNow());
 };
 
+const esvar = varname => `export const ${varname} = `;
+
+exports.esvar = esvar;
 exports.filename = filename;
+exports.greyNow = greyNow;
 exports.waitSpin = waitSpin;

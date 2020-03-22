@@ -1,10 +1,10 @@
 import del from 'del'
-import { JsonReader } from '@flua/json-reader'
+import { AssignTable } from '@flua/gulp-init'
 import { Table } from '@analys/table'
 import { matchSlice } from '@analys/table-init'
 import { deca } from '@spare/logger'
 import { says } from '@palett/says'
-import { rename } from '@vect/rename'
+import { Rename } from '@vect/rename'
 import { vinylizeTableChips } from './vinylizeTableChips'
 import { vinylizeTableLookup } from './vinylizeTableLookup'
 
@@ -27,30 +27,26 @@ export class TableGulp {
   }
 
   CleanDest () {
-    const clean = () => del([this.dest])
-    return rename(clean, says.roster('clean') + ' ' + this.dest)
+    return (() => del([this.dest]))
+      |> Rename(says.roster('clean') + ' ' + this.dest)
   }
 
   Read (filename) {
     const { src, table } = this
-    return JsonReader.TableReader({
-      table,
-      src,
-      raw: filename,
-      name: says.roster('read') + ' ' + filename
-    })
+    return AssignTable({ target: table, src, filename, rename: says.roster('read') + ' ' + filename })
   }
 
-  TableLookup ({ key, field, filename }) {
+  TableLookup ({ key, field, filename, readKey, readField }) {
     const { dest, table } = this
-    const method = vinylizeTableLookup.bind({ dest, table, key, field, filename })
-    return rename(method, says.roster(key) + ' -> ' + says.roster(field))
+    return vinylizeTableLookup
+      .bind({ dest, table, key, field, filename })
+      |> Rename(says.roster(key) + ' -> ' + says.roster(field))
   }
 
   TableChips ({ key, field, mode, filename }) {
     const { dest, table } = this
-    const method = vinylizeTableChips.bind({ dest, table, key, field, mode, filename })
-    return rename(method, says.roster(key) + ' -> ' + says.roster(field))
+    return vinylizeTableChips.bind({ dest, table, key, field, mode, filename })
+      |> Rename(says.roster(key) + ' -> ' + says.roster(field))
   }
 }
 

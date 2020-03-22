@@ -1,79 +1,28 @@
-import { rename } from '@vect/rename';
-import gulp from 'gulp';
-import tap from 'gulp-tap';
-import { matchSlice } from '@analys/table-init';
 import { promises } from 'fs';
 
-const tableReader = function () {
-  const {
-    table,
+async function loadObject() {
+  let {
+    base,
     src,
     filename
   } = this;
-  return gulp.src(src + '/' + filename).pipe(tap(file => {
-    var _JSON$parse;
-
-    const {
-      head,
-      rows
-    } = (_JSON$parse = JSON.parse(file.contents), matchSlice(_JSON$parse));
-    if (head && rows) Object.assign(table, {
-      head,
-      rows
-    });
-  }));
-};
+  if (base) src = base + '/' + src;
+  return await promises.readFile(src + '/' + filename).then(source => JSON.parse(source.toString()));
+}
 
 class JsonReader {
-  static table({
-    table,
+  static async load({
+    base,
     src,
     filename
-  }) {
-    return tableReader.call({
-      table,
+  } = {}) {
+    return loadObject.call({
+      base,
       src,
       filename
     });
   }
 
-  static TableReader({
-    table,
-    src,
-    filename,
-    rename: rename$1
-  }) {
-    const method = tableReader.bind({
-      table,
-      src,
-      filename
-    });
-    return rename$1 ? rename(method, rename$1) : method;
-  }
-
 }
 
-class JsonReaderAsync {
-  static async table({
-    table,
-    src,
-    filename
-  }) {
-    return await promises.readFile(process.cwd() + '/' + src + '/' + filename).then(source => {
-      var _JSON$parse;
-
-      const {
-        head,
-        rows
-      } = (_JSON$parse = JSON.parse(source.toString()), matchSlice(_JSON$parse));
-      Object.assign(table, {
-        head,
-        rows
-      });
-      return table;
-    });
-  }
-
-}
-
-export { JsonReader, JsonReaderAsync, tableReader };
+export { JsonReader, loadObject };
