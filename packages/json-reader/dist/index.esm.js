@@ -1,8 +1,28 @@
+import { rename } from '@vect/rename';
 import gulp from 'gulp';
 import tap from 'gulp-tap';
 import { matchSlice } from '@analys/table-init';
-import { rename } from '@vect/rename';
 import { promises } from 'fs';
+
+const tableReader = function () {
+  const {
+    table,
+    src,
+    filename
+  } = this;
+  return gulp.src(src + '/' + filename).pipe(tap(file => {
+    var _JSON$parse;
+
+    const {
+      head,
+      rows
+    } = (_JSON$parse = JSON.parse(file.contents), matchSlice(_JSON$parse));
+    if (head && rows) Object.assign(table, {
+      head,
+      rows
+    });
+  }));
+};
 
 class JsonReader {
   static table({
@@ -10,18 +30,11 @@ class JsonReader {
     src,
     filename
   }) {
-    return gulp.src(src + '/' + filename).pipe(tap(file => {
-      var _JSON$parse;
-
-      const {
-        head,
-        rows
-      } = (_JSON$parse = JSON.parse(file.contents), matchSlice(_JSON$parse));
-      if (head && rows) Object.assign(table, {
-        head,
-        rows
-      });
-    }));
+    return tableReader.call({
+      table,
+      src,
+      filename
+    });
   }
 
   static TableReader({
@@ -63,24 +76,4 @@ class JsonReaderAsync {
 
 }
 
-const tableReader$1 = function () {
-  const {
-    table,
-    src,
-    filename
-  } = this;
-  return gulp.src(src + '/' + filename).pipe(tap(file => {
-    var _JSON$parse;
-
-    const {
-      head,
-      rows
-    } = (_JSON$parse = JSON.parse(file.contents), matchSlice(_JSON$parse));
-    if (head && rows) Object.assign(table, {
-      head,
-      rows
-    });
-  }));
-};
-
-export { JsonReader, JsonReaderAsync, tableReader$1 as tableReader };
+export { JsonReader, JsonReaderAsync, tableReader };

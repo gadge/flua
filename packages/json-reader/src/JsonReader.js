@@ -1,15 +1,9 @@
-import gulp from 'gulp'
-import tap from 'gulp-tap'
-import { matchSlice } from '@analys/table-init'
 import { rename as doRename } from '@vect/rename'
+import { tableReader } from './tableReader'
 
 export class JsonReader {
   static table ({ table, src, filename }) {
-    return gulp.src(src + '/' + filename)
-      .pipe(tap((file) => {
-        const { head, rows } = JSON.parse(file.contents) |> matchSlice
-        if (head && rows) Object.assign(table, { head, rows })
-      }))
+    return tableReader.call({ table, src, filename })
   }
 
   static TableReader ({ table, src, filename, rename }) {

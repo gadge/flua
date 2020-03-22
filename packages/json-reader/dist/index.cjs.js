@@ -4,11 +4,31 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
+var rename = require('@vect/rename');
 var gulp = _interopDefault(require('gulp'));
 var tap = _interopDefault(require('gulp-tap'));
 var tableInit = require('@analys/table-init');
-var rename = require('@vect/rename');
 var fs = require('fs');
+
+const tableReader = function () {
+  const {
+    table,
+    src,
+    filename
+  } = this;
+  return gulp.src(src + '/' + filename).pipe(tap(file => {
+    var _JSON$parse;
+
+    const {
+      head,
+      rows
+    } = (_JSON$parse = JSON.parse(file.contents), tableInit.matchSlice(_JSON$parse));
+    if (head && rows) Object.assign(table, {
+      head,
+      rows
+    });
+  }));
+};
 
 class JsonReader {
   static table({
@@ -16,18 +36,11 @@ class JsonReader {
     src,
     filename
   }) {
-    return gulp.src(src + '/' + filename).pipe(tap(file => {
-      var _JSON$parse;
-
-      const {
-        head,
-        rows
-      } = (_JSON$parse = JSON.parse(file.contents), tableInit.matchSlice(_JSON$parse));
-      if (head && rows) Object.assign(table, {
-        head,
-        rows
-      });
-    }));
+    return tableReader.call({
+      table,
+      src,
+      filename
+    });
   }
 
   static TableReader({
@@ -69,26 +82,6 @@ class JsonReaderAsync {
 
 }
 
-const tableReader$1 = function () {
-  const {
-    table,
-    src,
-    filename
-  } = this;
-  return gulp.src(src + '/' + filename).pipe(tap(file => {
-    var _JSON$parse;
-
-    const {
-      head,
-      rows
-    } = (_JSON$parse = JSON.parse(file.contents), tableInit.matchSlice(_JSON$parse));
-    if (head && rows) Object.assign(table, {
-      head,
-      rows
-    });
-  }));
-};
-
 exports.JsonReader = JsonReader;
 exports.JsonReaderAsync = JsonReaderAsync;
-exports.tableReader = tableReader$1;
+exports.tableReader = tableReader;
