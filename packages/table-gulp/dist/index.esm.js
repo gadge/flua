@@ -7,6 +7,7 @@ import '@analys/table';
 import { snakeToPascal } from '@spare/phrasing';
 import { Rename } from '@vect/rename';
 import { says } from '@palett/says';
+import { delogger } from '@spare/logger';
 
 /**
  * @typedef {number|string} str
@@ -81,6 +82,8 @@ const TableLookup = options => {
   return _tableLookup$bind = tableLookup.bind(options), Rename(says.roster(options.key) + ' -> ' + says.roster(options.field))(_tableLookup$bind);
 };
 const tableLookup = function () {
+  var _objectify, _lookups, _Verse$object;
+
   /** @type {Table} */
   const table = this.table;
   /** @type {string} */
@@ -98,16 +101,15 @@ const tableLookup = function () {
   /** @type {string} */
 
   const filename = this.filename || snakeToPascal(`${key}-to-${field}`);
-  let vinylBuffer;
-
-  if (config === null || config === void 0 ? void 0 : config.objectify) {
-    const lookups = table.lookupTable(key, field, true);
-    vinylBuffer = vinylize(filename + '.js', esvar(filename), Verse.object(lookups, config));
-  } else {
-    const lookups = table.lookupTable(key, field, false);
-    vinylBuffer = vinylize(filename + '.js', esvar(filename), Verse.entries(lookups, config));
-  }
-
+  const {
+    objectify
+  } = config;
+  const stringify = objectify ? Verse.object : Verse.entries;
+  _objectify = objectify, delogger(_objectify);
+  const lookups = table.lookupTable(key, field, !!objectify);
+  _lookups = lookups, delogger(_lookups);
+  _Verse$object = Verse.object(lookups), delogger(_Verse$object);
+  const vinylBuffer = vinylize(filename + '.js', esvar(filename), stringify(lookups, config));
   return dest ? vinylBuffer.pipe(gulp.dest(dest)) : vinylBuffer;
 };
 

@@ -25,7 +25,7 @@
     "@spare/enum-chars": "^0.3.7",
     "@spare/logger": "^0.3.7",
     "@spare/phrasing": "^0.3.7",
-    "@spare/verse": "^0.3.7",
+    "@spare/verse": "^0.3.8",
     "@typen/enum-data-types": "^0.0.3",
     "@typen/enum-object-types": "^0.0.3",
     "@vect/rename": "^0.2.0",

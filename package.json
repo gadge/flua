@@ -36,7 +36,7 @@
     "@rollup/plugin-json": "^4.0.1",
     "@rollup/plugin-node-resolve": "^7.0.0",
     "@spare/logger": "^0.3.7",
-    "@spare/verse": "^0.3.7",
+    "@spare/verse": "^0.3.8",
     "@typen/num-strict": "latest",
     "@vect/rename": "^0.2.0",
     "del": "^5.1.0",

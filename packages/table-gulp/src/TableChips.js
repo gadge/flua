@@ -36,7 +36,6 @@ export const tableChips = function () {
   /** @type {Object} */ const config = this.config || {}
   /** @type {string} */ const dest = this.dest
   /** @type {string} */ const filename = this.filename || snakeToPascal(`${key}-to-${field}`)
-  config.read = config.read || Verse.vector
 
   const chips = table.chips({ key, field, mode, objectify: false })
   const vinylBuffer = vinylize(filename + '.js',
