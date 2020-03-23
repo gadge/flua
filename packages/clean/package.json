@@ -1,7 +1,7 @@
 {
-  "name": "@flua/gulp-init",
+  "name": "@flua/clean",
   "version": "0.0.4",
-  "description": "Swap values at a pair of indexes",
+  "description": "Wrap 'del' for gulp use",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "files": [
@@ -12,14 +12,13 @@
   },
   "scripts": {
     "pub": "npm publish",
-    "test": "node -r @babel/register test/gulp-init.test.js"
+    "test": "node -r @babel/register test/vinylize.test.js"
   },
   "dependencies": {
-    "@analys/table-init": "^0.1.2",
-    "@spare/enum-chars": "^0.3.5",
+    "@palett/says": "^0.1.0",
+    "@spare/deco": "^0.3.5",
     "@vect/rename": "^0.2.0",
-    "gulp": "^4.0.2",
-    "gulp-tap": "^2.0.0"
+    "del": "^5.1.0"
   },
   "repository": {
     "type": "git",

@@ -1,1 +1,2 @@
-export { TableGulp } from './src/TableGulp'
+export { TableChips } from './src/TableChips'
+export { TableLookup } from './src/TableLookup'

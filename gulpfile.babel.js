@@ -12,6 +12,7 @@ export {
   jsonReader,
   gulpInit
 }
+
 export default gulp.series(
   main
 )
