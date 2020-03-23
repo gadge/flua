@@ -5,7 +5,6 @@ import { Verse } from '@spare/verse'
 import { snakeToPascal } from '@spare/phrasing'
 import { Rename } from '@vect/rename'
 import { says } from '@palett/says'
-import { delogger } from '@spare/logger'
 
 /**
  *
@@ -31,11 +30,10 @@ export const tableLookup = function () {
   /** @type {string} */ const filename = this.filename || snakeToPascal(`${key}-to-${field}`)
   const { objectify } = config
 
-  const stringify = (objectify ? Verse.object : Verse.entries)
-  const lookups = table.lookupTable(key, field, !!objectify)
+  const lookups = table.lookupTable(key, field, objectify)
   const vinylBuffer = vinylize(filename + '.js',
     esvar(filename),
-    stringify(lookups, config))
+    (objectify ? Verse.object : Verse.entries)(lookups, config))
   return dest
     ? vinylBuffer.pipe(gulp.dest(dest))
     : vinylBuffer

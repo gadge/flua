@@ -13,7 +13,6 @@ require('@analys/table');
 var phrasing = require('@spare/phrasing');
 var rename = require('@vect/rename');
 var says = require('@palett/says');
-require('@spare/logger');
 
 /**
  * @typedef {number|string} str

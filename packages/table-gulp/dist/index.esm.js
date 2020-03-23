@@ -7,7 +7,6 @@ import '@analys/table';
 import { snakeToPascal } from '@spare/phrasing';
 import { Rename } from '@vect/rename';
 import { says } from '@palett/says';
-import '@spare/logger';
 
 /**
  * @typedef {number|string} str

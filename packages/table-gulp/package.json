@@ -15,22 +15,15 @@
     "test": "node -r @babel/register test/table-gulp.test.js"
   },
   "dependencies": {
-    "@analys/enum-pivot-mode": "^0.1.3",
-    "@analys/table": "^0.1.3",
-    "@analys/table-init": "^0.1.2",
-    "@flua/gulp-init": "^0.1.2",
-    "@flua/utils": "^0.1.2",
+    "gulp": "^4.0.2",
+    "@flua/utils":"^0.1.2",
     "@flua/vinylize": "^0.1.2",
-    "@palett/says": "^0.1.0",
-    "@spare/enum-chars": "^0.3.7",
-    "@spare/logger": "^0.3.7",
-    "@spare/phrasing": "^0.3.7",
+    "@analys/enum-pivot-mode": "^0.1.5",
+    "@analys/table": "^0.1.5",
     "@spare/verse": "^0.3.8",
-    "@typen/enum-data-types": "^0.0.3",
-    "@typen/enum-object-types": "^0.0.3",
+    "@spare/phrasing":"^0.3.7",
     "@vect/rename": "^0.2.0",
-    "del": "^5.1.0",
-    "gulp": "^4.0.2"
+    "@palett/says":"^0.1.0"
   },
   "repository": {
     "type": "git",
