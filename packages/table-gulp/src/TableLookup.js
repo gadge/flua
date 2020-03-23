@@ -28,11 +28,19 @@ export const tableLookup = function () {
   /** @type {string} */ const dest = this.dest
   /** @type {Object} */ const config = this.config || {}
   /** @type {string} */ const filename = this.filename || snakeToPascal(`${key}-to-${field}`)
-
-  const lookups = table.lookupTable(key, field, false)
-  const vinylBuffer = vinylize(filename + '.js',
-    esvar(filename),
-    Verse.entries(lookups, config))
+  let vinylBuffer
+  if (config?.objectify) {
+    const lookups = table.lookupTable(key, field, true)
+    vinylBuffer = vinylize(filename + '.js',
+      esvar(filename),
+      Verse.object(lookups, config))
+  }
+  else {
+    const lookups = table.lookupTable(key, field, false)
+    vinylBuffer = vinylize(filename + '.js',
+      esvar(filename),
+      Verse.entries(lookups, config))
+  }
   return dest
     ? vinylBuffer.pipe(gulp.dest(dest))
     : vinylBuffer

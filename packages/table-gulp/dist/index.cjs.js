@@ -104,8 +104,16 @@ const tableLookup = function () {
   /** @type {string} */
 
   const filename = this.filename || phrasing.snakeToPascal(`${key}-to-${field}`);
-  const lookups = table.lookupTable(key, field, false);
-  const vinylBuffer = vinylize.vinylize(filename + '.js', utils.esvar(filename), verse.Verse.entries(lookups, config));
+  let vinylBuffer;
+
+  if (config === null || config === void 0 ? void 0 : config.objectify) {
+    const lookups = table.lookupTable(key, field, true);
+    vinylBuffer = vinylize.vinylize(filename + '.js', utils.esvar(filename), verse.Verse.object(lookups, config));
+  } else {
+    const lookups = table.lookupTable(key, field, false);
+    vinylBuffer = vinylize.vinylize(filename + '.js', utils.esvar(filename), verse.Verse.entries(lookups, config));
+  }
+
   return dest ? vinylBuffer.pipe(gulp.dest(dest)) : vinylBuffer;
 };
 
