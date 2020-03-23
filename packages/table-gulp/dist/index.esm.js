@@ -7,7 +7,7 @@ import '@analys/table';
 import { snakeToPascal } from '@spare/phrasing';
 import { Rename } from '@vect/rename';
 import { says } from '@palett/says';
-import { delogger } from '@spare/logger';
+import '@spare/logger';
 
 /**
  * @typedef {number|string} str
@@ -52,7 +52,6 @@ const tableChips = function () {
   /** @type {string} */
 
   const filename = this.filename || snakeToPascal(`${key}-to-${field}`);
-  config.read = config.read || Verse.vector;
   const chips = table.chips({
     key,
     field,
@@ -82,8 +81,6 @@ const TableLookup = options => {
   return _tableLookup$bind = tableLookup.bind(options), Rename(says.roster(options.key) + ' -> ' + says.roster(options.field))(_tableLookup$bind);
 };
 const tableLookup = function () {
-  var _objectify, _lookups, _Verse$object;
-
   /** @type {Table} */
   const table = this.table;
   /** @type {string} */
@@ -105,10 +102,7 @@ const tableLookup = function () {
     objectify
   } = config;
   const stringify = objectify ? Verse.object : Verse.entries;
-  _objectify = objectify, delogger(_objectify);
   const lookups = table.lookupTable(key, field, !!objectify);
-  _lookups = lookups, delogger(_lookups);
-  _Verse$object = Verse.object(lookups), delogger(_Verse$object);
   const vinylBuffer = vinylize(filename + '.js', esvar(filename), stringify(lookups, config));
   return dest ? vinylBuffer.pipe(gulp.dest(dest)) : vinylBuffer;
 };

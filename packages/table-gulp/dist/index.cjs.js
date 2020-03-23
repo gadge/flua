@@ -13,7 +13,7 @@ require('@analys/table');
 var phrasing = require('@spare/phrasing');
 var rename = require('@vect/rename');
 var says = require('@palett/says');
-var logger = require('@spare/logger');
+require('@spare/logger');
 
 /**
  * @typedef {number|string} str
@@ -58,7 +58,6 @@ const tableChips = function () {
   /** @type {string} */
 
   const filename = this.filename || phrasing.snakeToPascal(`${key}-to-${field}`);
-  config.read = config.read || verse.Verse.vector;
   const chips = table.chips({
     key,
     field,
@@ -88,8 +87,6 @@ const TableLookup = options => {
   return _tableLookup$bind = tableLookup.bind(options), rename.Rename(says.says.roster(options.key) + ' -> ' + says.says.roster(options.field))(_tableLookup$bind);
 };
 const tableLookup = function () {
-  var _objectify, _lookups, _Verse$object;
-
   /** @type {Table} */
   const table = this.table;
   /** @type {string} */
@@ -111,10 +108,7 @@ const tableLookup = function () {
     objectify
   } = config;
   const stringify = objectify ? verse.Verse.object : verse.Verse.entries;
-  _objectify = objectify, logger.delogger(_objectify);
   const lookups = table.lookupTable(key, field, !!objectify);
-  _lookups = lookups, logger.delogger(_lookups);
-  _Verse$object = verse.Verse.object(lookups), logger.delogger(_Verse$object);
   const vinylBuffer = vinylize.vinylize(filename + '.js', utils.esvar(filename), stringify(lookups, config));
   return dest ? vinylBuffer.pipe(gulp.dest(dest)) : vinylBuffer;
 };
