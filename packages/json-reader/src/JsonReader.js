@@ -5,3 +5,4 @@ export class JsonReader {
     return loadObject.call({ base, src, filename })
   }
 }
+

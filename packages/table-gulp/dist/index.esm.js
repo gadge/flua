@@ -100,9 +100,8 @@ const tableLookup = function () {
   const {
     objectify
   } = config;
-  const stringify = objectify ? Verse.object : Verse.entries;
-  const lookups = table.lookupTable(key, field, !!objectify);
-  const vinylBuffer = vinylize(filename + '.js', esvar(filename), stringify(lookups, config));
+  const lookups = table.lookupTable(key, field, objectify);
+  const vinylBuffer = vinylize(filename + '.js', esvar(filename), (objectify ? Verse.object : Verse.entries)(lookups, config));
   return dest ? vinylBuffer.pipe(gulp.dest(dest)) : vinylBuffer;
 };
 
