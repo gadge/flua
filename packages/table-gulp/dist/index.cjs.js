@@ -5,6 +5,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
 var gulp = _interopDefault(require('gulp'));
+var pluralize = _interopDefault(require('pluralize'));
 var vinylize = require('@flua/vinylize');
 var utils = require('@flua/utils');
 var enumPivotMode = require('@analys/enum-pivot-mode');
@@ -56,7 +57,7 @@ const tableChips = function () {
   const dest = this.dest;
   /** @type {string} */
 
-  const filename = this.filename || phrasing.snakeToPascal(`${key}-to-${field}`);
+  const filename = this.filename || phrasing.snakeToPascal(`${key}-to-${pluralize(field)}`);
   const chips = table.chips({
     key,
     field,

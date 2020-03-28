@@ -21,7 +21,7 @@ export const tableGulp = gulp.series(
   Clean(DEST),
   AssignTable({ target: table, src: SRC, filename: RAW }),
   checkTable,
-  // TableLookup({ table, key: PLANT, field: 'app', config: { objectify: true }, dest: DEST }),
+  TableLookup({ table, key: PLANT, field: 'app', config: { objectify: true }, dest: DEST }),
   TableLookup({ table, key: SKU, field: MAXTHRUST_WA, dest: DEST }),
   TableChips({ table, key: PLANT, field: SKU, dest: DEST })
 )

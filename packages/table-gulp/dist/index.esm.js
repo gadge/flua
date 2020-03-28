@@ -1,4 +1,5 @@
 import gulp from 'gulp';
+import pluralize from 'pluralize';
 import { vinylize } from '@flua/vinylize';
 import { esvar } from '@flua/utils';
 import { ACCUM } from '@analys/enum-pivot-mode';
@@ -50,7 +51,7 @@ const tableChips = function () {
   const dest = this.dest;
   /** @type {string} */
 
-  const filename = this.filename || snakeToPascal(`${key}-to-${field}`);
+  const filename = this.filename || snakeToPascal(`${key}-to-${pluralize(field)}`);
   const chips = table.chips({
     key,
     field,

@@ -1,4 +1,5 @@
 import gulp from 'gulp'
+import pluralize from 'pluralize'
 import { vinylize } from '@flua/vinylize'
 import { esvar } from '@flua/utils'
 import { ACCUM } from '@analys/enum-pivot-mode'
@@ -35,7 +36,8 @@ export const tableChips = function () {
   /** @type {number} */ const mode = this.mode || ACCUM
   /** @type {Object} */ const config = this.config || {}
   /** @type {string} */ const dest = this.dest
-  /** @type {string} */ const filename = this.filename || snakeToPascal(`${key}-to-${field}`)
+  /** @type {string} */ const filename = this.filename
+    || snakeToPascal(`${key}-to-${pluralize(field)}`)
 
   const chips = table.chips({ key, field, mode, objectify: false })
   const vinylBuffer = vinylize(filename + '.js',

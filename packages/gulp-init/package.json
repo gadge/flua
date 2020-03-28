@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@analys/table-init": "^0.1.5",
-    "@spare/enum-chars": "^0.3.7",
+    "@spare/enum-chars": "^0.4.4",
     "@vect/rename": "^0.2.0",
     "gulp": "^4.0.2",
     "gulp-tap": "^2.0.0"

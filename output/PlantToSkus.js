@@ -1,4 +1,4 @@
-export const PlantToSku = [
+export const PlantToSkus = [
   [       'PW', ['F100-PW-220', 'F100-PW-229', 'F119', 'F135-PW-100', 'F135-PW-600']],
   [ 'Shenyang', ['WS-10']],
   [  'Guizhou', ['WS-13']],

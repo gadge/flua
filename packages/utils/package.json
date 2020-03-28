@@ -15,9 +15,9 @@
     "test": "node -r @babel/register test/vinyl-init.test.js"
   },
   "dependencies": {
-    "@palett/cards": "^0.1.0",
-    "@palett/convert": "^0.1.0",
-    "@palett/dye": "^0.1.0",
+    "@palett/cards": "^0.1.1",
+    "@palett/convert": "^0.1.1",
+    "@palett/dye": "^0.1.1",
     "@valjoux/timeout": "^0.0.5",
     "@valjoux/timestamp": "^0.0.5",
     "ora": "^4.0.3"
