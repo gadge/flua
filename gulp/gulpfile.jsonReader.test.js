@@ -3,10 +3,11 @@ import { JsonReader } from '@flua/json-reader'
 import del from 'del'
 import { Table } from '@analys/table'
 import { decoTable, logger } from '@spare/logger'
-import { vinylize } from '@flua/vinylize'
 import { esvar } from '@flua/utils'
 import { Verse } from '@spare/verse'
 import { Rename } from '@vect/rename'
+import { snakeToCamel } from '@spare/phrasing'
+import { Vinylize } from '@flua/vinylize'
 
 const SRC = 'static'
 const DEST = 'output'
@@ -28,8 +29,10 @@ const checkTable = async () => {
 
 const LookupTable = ({ target, key, field }) => (async () => {
   const lkup = await target.lookupTable(key, field, false)
-  const filename = `${key}_${field}.js`
-  vinylize(filename, esvar(filename), Verse.entries(lkup))
+  const filename = snakeToCamel(`${key}-to-${field}`)
+  Vinylize(filename + '.js')
+    .p(esvar(filename))
+    .p(Verse.entries(lkup))
     .pipe(gulp.dest(DEST))
 }) |> Rename('lookupTable')
 

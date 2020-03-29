@@ -1,4 +1,4 @@
-export const SkuToMaxtwa = [
+export const skuToMaxtwa = [
   ['F100-PW-220', 106],
   ['F100-PW-229', 130],
   [       'F119', 156],

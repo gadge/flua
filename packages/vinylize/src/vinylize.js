@@ -2,7 +2,10 @@ import source from 'vinyl-source-stream'
 import vinylBuffer from 'vinyl-buffer'
 import size from 'gulp-size'
 
-export const vinylize = (filename, ...contents) => {
+
+
+const makeVinyl = function (...contents) {
+  const { filename } = this
   const stream = source(filename)
   for (let element of contents) stream.write(element)
   stream.end()
@@ -10,3 +13,7 @@ export const vinylize = (filename, ...contents) => {
     .pipe(vinylBuffer())
     .pipe(size({ title: filename }))
 }
+
+
+
+export const vinylize = (filename, ...contents) => makeVinyl.apply({ filename }, contents)
