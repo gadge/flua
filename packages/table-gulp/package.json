@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "@analys/enum-pivot-mode": "^0.1.5",
-    "@analys/table": "^0.1.5",
     "@flua/utils": "^0.1.7",
     "@flua/vinylize": "^0.1.7",
     "@palett/says": "^0.1.1",

@@ -1,6 +1,6 @@
 import gulp from 'gulp'
-import { vinylize } from '@flua/vinylize'
 import { esvar } from '@flua/utils'
+import { Vinylize } from '@flua/vinylize'
 import { Verse } from '@spare/verse'
 import { snakeToPascal } from '@spare/phrasing'
 import { Rename } from '@vect/rename'
@@ -31,10 +31,10 @@ export const tableLookup = function () {
   const { objectify } = config
 
   const lookups = table.lookupTable(key, field, objectify)
-  const vinylBuffer = vinylize(filename + '.js',
-    esvar(filename),
-    (objectify ? Verse.object : Verse.entries)(lookups, config))
+  const vinylBuffer = Vinylize(filename + '.js')
+    .p(esvar(filename))
+    .p((objectify ? Verse.object : Verse.entries)(lookups, config))
   return dest
     ? vinylBuffer.pipe(gulp.dest(dest))
-    : vinylBuffer
+    : vinylBuffer.rest()
 }

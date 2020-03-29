@@ -10,7 +10,6 @@ var vinylize = require('@flua/vinylize');
 var utils = require('@flua/utils');
 var enumPivotMode = require('@analys/enum-pivot-mode');
 var verse = require('@spare/verse');
-require('@analys/table');
 var phrasing = require('@spare/phrasing');
 var rename = require('@vect/rename');
 var says = require('@palett/says');
@@ -64,9 +63,9 @@ const tableChips = function () {
     mode,
     objectify: false
   });
-  const vinylBuffer = vinylize.vinylize(filename + '.js', utils.esvar(filename), verse.Verse.entries(chips, config));
+  const vinylBuffer = vinylize.Vinylize(filename + '.js').p(utils.esvar(filename)).p(verse.Verse.entries(chips, config));
   return dest // if provided, save to dest/filename. if omitted, return vinyl buffer.
-  ? vinylBuffer.pipe(gulp.dest(dest)) : vinylBuffer;
+  ? vinylBuffer.pipe(gulp.dest(dest)) : vinylBuffer.rest();
 };
 
 /**
@@ -108,8 +107,8 @@ const tableLookup = function () {
     objectify
   } = config;
   const lookups = table.lookupTable(key, field, objectify);
-  const vinylBuffer = vinylize.vinylize(filename + '.js', utils.esvar(filename), (objectify ? verse.Verse.object : verse.Verse.entries)(lookups, config));
-  return dest ? vinylBuffer.pipe(gulp.dest(dest)) : vinylBuffer;
+  const vinylBuffer = vinylize.Vinylize(filename + '.js').p(utils.esvar(filename)).p((objectify ? verse.Verse.object : verse.Verse.entries)(lookups, config));
+  return dest ? vinylBuffer.pipe(gulp.dest(dest)) : vinylBuffer.rest();
 };
 
 exports.TableChips = TableChips;

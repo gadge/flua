@@ -12,9 +12,9 @@ export class WritableVinyl {
   /** @return {WritableVinyl} */
   p (content) { return this.stream.write(content), this }
 
-  pipe (fn) { return this.endNote().pipe(fn) }
+  pipe (fn) { return this.rest().pipe(fn) }
 
-  endNote () {
+  rest () {
     this.stream.end()
     return this.stream
       .pipe(vinylBuffer())

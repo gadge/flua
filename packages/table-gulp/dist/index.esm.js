@@ -1,10 +1,9 @@
 import gulp from 'gulp';
 import pluralize from 'pluralize';
-import { vinylize } from '@flua/vinylize';
+import { Vinylize } from '@flua/vinylize';
 import { esvar } from '@flua/utils';
 import { ACCUM } from '@analys/enum-pivot-mode';
 import { Verse } from '@spare/verse';
-import '@analys/table';
 import { snakeToPascal } from '@spare/phrasing';
 import { Rename } from '@vect/rename';
 import { says } from '@palett/says';
@@ -58,9 +57,9 @@ const tableChips = function () {
     mode,
     objectify: false
   });
-  const vinylBuffer = vinylize(filename + '.js', esvar(filename), Verse.entries(chips, config));
+  const vinylBuffer = Vinylize(filename + '.js').p(esvar(filename)).p(Verse.entries(chips, config));
   return dest // if provided, save to dest/filename. if omitted, return vinyl buffer.
-  ? vinylBuffer.pipe(gulp.dest(dest)) : vinylBuffer;
+  ? vinylBuffer.pipe(gulp.dest(dest)) : vinylBuffer.rest();
 };
 
 /**
@@ -102,8 +101,8 @@ const tableLookup = function () {
     objectify
   } = config;
   const lookups = table.lookupTable(key, field, objectify);
-  const vinylBuffer = vinylize(filename + '.js', esvar(filename), (objectify ? Verse.object : Verse.entries)(lookups, config));
-  return dest ? vinylBuffer.pipe(gulp.dest(dest)) : vinylBuffer;
+  const vinylBuffer = Vinylize(filename + '.js').p(esvar(filename)).p((objectify ? Verse.object : Verse.entries)(lookups, config));
+  return dest ? vinylBuffer.pipe(gulp.dest(dest)) : vinylBuffer.rest();
 };
 
 export { TableChips, TableLookup };

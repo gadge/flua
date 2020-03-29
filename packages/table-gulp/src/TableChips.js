@@ -1,10 +1,9 @@
 import gulp from 'gulp'
 import pluralize from 'pluralize'
-import { vinylize } from '@flua/vinylize'
+import { Vinylize } from '@flua/vinylize'
 import { esvar } from '@flua/utils'
 import { ACCUM } from '@analys/enum-pivot-mode'
 import { Verse } from '@spare/verse'
-import { Table } from '@analys/table'
 import { snakeToPascal } from '@spare/phrasing'
 import { Rename } from '@vect/rename'
 import { says } from '@palett/says'
@@ -40,10 +39,10 @@ export const tableChips = function () {
     || snakeToPascal(`${key}-to-${pluralize(field)}`)
 
   const chips = table.chips({ key, field, mode, objectify: false })
-  const vinylBuffer = vinylize(filename + '.js',
-    esvar(filename),
-    Verse.entries(chips, config))
+  const vinylBuffer = Vinylize(filename + '.js')
+    .p(esvar(filename))
+    .p(Verse.entries(chips, config))
   return dest // if provided, save to dest/filename. if omitted, return vinyl buffer.
     ? vinylBuffer.pipe(gulp.dest(dest))
-    : vinylBuffer
+    : vinylBuffer.rest()
 }

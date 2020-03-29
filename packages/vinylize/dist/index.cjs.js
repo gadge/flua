@@ -57,10 +57,10 @@ class WritableVinyl {
   }
 
   pipe(fn) {
-    return this.endNote().pipe(fn);
+    return this.rest().pipe(fn);
   }
 
-  endNote() {
+  rest() {
     this.stream.end();
     return this.stream.pipe(vinylBuffer()).pipe(size({
       title: this.filename
