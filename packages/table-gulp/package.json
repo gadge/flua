@@ -19,8 +19,8 @@
     "@flua/utils": "^0.1.8",
     "@flua/vinylize": "^0.1.8",
     "@palett/says": "^0.1.1",
-    "@spare/phrasing": "^0.4.5",
-    "@spare/verse": "^0.4.5",
+    "@spare/phrasing": "^0.4.7",
+    "@spare/verse": "^0.4.7",
     "@vect/rename": "^0.2.0",
     "gulp": "^4.0.2",
     "pluralize": "^8.0.0"

@@ -1,0 +1,35 @@
+{
+  "name": "@flua/enum-prompt-types",
+  "version": "0.1.8",
+  "description": "Enums for prompt types",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "pub": "npm publish",
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoyeungw/flua.git"
+  },
+  "keywords": [
+    "prompt",
+    "inquirers"
+  ],
+  "author": {
+    "name": "Hoyeung Wong",
+    "email": "hoyeungw@outlook.com",
+    "url": "https://github.com/hoyeungw"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hoyeungw/flua.git"
+  },
+  "homepage": "https://github.com/hoyeungw/flua#readme"
+}
