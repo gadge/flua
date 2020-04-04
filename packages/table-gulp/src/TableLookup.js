@@ -22,14 +22,15 @@ import { IMMUTABLE } from '@analys/enum-mutabilities'
  */
 export const TableLookup = (options) =>
   tableLookup.bind(options)
-    |> Rename(says.roster(options.key) + ' -> ' + says.roster(options.field))
+    |> Rename(says.roster(options?.key ?? '') + ' -> ' + says.roster(options?.field ?? ''))
 
 export const tableLookup = function () {
   /** @type {Table} */  let table = this.table
   /** @type {string} */ const key = this.key
   /** @type {string} */ const field = this.field
-  /** @type {string} */ const dest = this.dest
   /** @type {Object} */ const config = this.config || {}
+  /** @type {string} */ const filter = this.filter
+  /** @type {string} */ const dest = this.dest
   /** @type {string} */ const filename = this.filename || snakeToPascal(`${key}-to-${field}`)
 
   if (filter) table = Table.from(table).find(filter, IMMUTABLE)
