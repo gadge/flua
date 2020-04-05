@@ -30,6 +30,7 @@ var enumMutabilities = require('@analys/enum-mutabilities');
  * @param {Object} [options.config] - config for Verse.entries
  * @param {string} [options.dest]
  * @param {string} [options.filename]
+ * @param {string} [options.varname]
  * @return {Function}
  */
 
@@ -59,13 +60,16 @@ const tableChips = function () {
   /** @type {string} */
 
   const filename = this.filename || phrasing.snakeToPascal(`${key}-to-${pluralize(field)}`);
+  /** @type {string} */
+
+  const varname = this.varname || filename;
   const chips = table.chips({
     key,
     field,
     mode,
     objectify: false
   });
-  const vinylBuffer = vinylize.Vinylize(filename + '.js').p(utils.esvar(filename)).p(verse.Verse.entries(chips, config));
+  const vinylBuffer = vinylize.Vinylize(filename + '.js').p(utils.esvar(varname)).p(verse.Verse.entries(chips, config));
   return dest // if provided, save to dest/filename. if omitted, return vinyl buffer.
   ? vinylBuffer.pipe(gulp.dest(dest)) : vinylBuffer.rest();
 };
@@ -80,6 +84,7 @@ const tableChips = function () {
  * @param {Object} [options.filter] - config for table.find
  * @param {string} [options.dest]
  * @param {string} [options.filename]
+ * @param {string} [options.varname]
  * @return {Function}
  */
 
@@ -109,9 +114,12 @@ const tableLookup = function () {
   /** @type {string} */
 
   const filename = this.filename || phrasing.snakeToPascal(`${key}-to-${field}`);
+  /** @type {string} */
+
+  const varname = this.varname || filename;
   if (filter) table$1 = table.Table.from(table$1).find(filter, enumMutabilities.IMMUTABLE);
   const lookups = table$1.lookupTable(key, field, config === null || config === void 0 ? void 0 : config.objectify);
-  const vinylBuffer = vinylize.Vinylize(filename + '.js').p(utils.esvar(filename)).p(((config === null || config === void 0 ? void 0 : config.objectify) ? verse.Verse.object : verse.Verse.entries)(lookups, config));
+  const vinylBuffer = vinylize.Vinylize(filename + '.js').p(utils.esvar(varname)).p(((config === null || config === void 0 ? void 0 : config.objectify) ? verse.Verse.object : verse.Verse.entries)(lookups, config));
   return dest ? vinylBuffer.pipe(gulp.dest(dest)) : vinylBuffer.rest();
 };
 

@@ -24,6 +24,7 @@ import { IMMUTABLE } from '@analys/enum-mutabilities';
  * @param {Object} [options.config] - config for Verse.entries
  * @param {string} [options.dest]
  * @param {string} [options.filename]
+ * @param {string} [options.varname]
  * @return {Function}
  */
 
@@ -53,13 +54,16 @@ const tableChips = function () {
   /** @type {string} */
 
   const filename = this.filename || snakeToPascal(`${key}-to-${pluralize(field)}`);
+  /** @type {string} */
+
+  const varname = this.varname || filename;
   const chips = table.chips({
     key,
     field,
     mode,
     objectify: false
   });
-  const vinylBuffer = Vinylize(filename + '.js').p(esvar(filename)).p(Verse.entries(chips, config));
+  const vinylBuffer = Vinylize(filename + '.js').p(esvar(varname)).p(Verse.entries(chips, config));
   return dest // if provided, save to dest/filename. if omitted, return vinyl buffer.
   ? vinylBuffer.pipe(gulp.dest(dest)) : vinylBuffer.rest();
 };
@@ -74,6 +78,7 @@ const tableChips = function () {
  * @param {Object} [options.filter] - config for table.find
  * @param {string} [options.dest]
  * @param {string} [options.filename]
+ * @param {string} [options.varname]
  * @return {Function}
  */
 
@@ -103,9 +108,12 @@ const tableLookup = function () {
   /** @type {string} */
 
   const filename = this.filename || snakeToPascal(`${key}-to-${field}`);
+  /** @type {string} */
+
+  const varname = this.varname || filename;
   if (filter) table = Table.from(table).find(filter, IMMUTABLE);
   const lookups = table.lookupTable(key, field, config === null || config === void 0 ? void 0 : config.objectify);
-  const vinylBuffer = Vinylize(filename + '.js').p(esvar(filename)).p(((config === null || config === void 0 ? void 0 : config.objectify) ? Verse.object : Verse.entries)(lookups, config));
+  const vinylBuffer = Vinylize(filename + '.js').p(esvar(varname)).p(((config === null || config === void 0 ? void 0 : config.objectify) ? Verse.object : Verse.entries)(lookups, config));
   return dest ? vinylBuffer.pipe(gulp.dest(dest)) : vinylBuffer.rest();
 };
 
