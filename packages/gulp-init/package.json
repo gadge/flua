@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/gulp-init.test.js"
   },
   "dependencies": {
-    "@analys/table-init": "^0.1.6",
+    "@analys/table-init": "^0.1.7",
     "@vect/rename": "^0.2.0",
     "gulp": "^4.0.2",
     "gulp-tap": "^2.0.0"
