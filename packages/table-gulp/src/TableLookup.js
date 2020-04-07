@@ -21,12 +21,14 @@ import { IMMUTABLE } from '@analys/enum-mutabilities'
  * @param {string} [options.varname]
  * @return {Function}
  */
-export const TableLookup = (options) =>
-  tableLookup.bind(options)
-    |> Rename(says.roster(options?.key ?? '') + ' -> ' + says.roster(options?.field ?? ''))
+export const TableLookup = (options) => {
+  return tableLookup
+    .bind(options)
+    |> Rename(says.roster(options.key) + ' -> ' + says.roster(options.field))
+}
 
 export const tableLookup = function () {
-  /** @type {Table} */  let table = this.table
+  /** @type {Table} */  let table = this.table || this.target[this.prop]
   /** @type {string} */ const key = this.key
   /** @type {string} */ const field = this.field
   /** @type {Object} */ const config = this.config || {}
