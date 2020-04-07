@@ -11,7 +11,9 @@ import { IMMUTABLE } from '@analys/enum-mutabilities'
 /**
  *
  * @param {Object} options
- * @param {Table}  options.table
+ * @param {Table}  options.table - if set, options.target and options.prop will be omitted.
+ * @param {Table}  options.[target]
+ * @param {Table}  options.[prop]
  * @param {string} options.key
  * @param {string} options.field
  * @param {Object} [options.config] - config for Verse.entries
