@@ -22,6 +22,7 @@ import { IMMUTABLE } from '@analys/enum-mutabilities';
  * @param {string} options.field
  * @param {number} [options.mode=ACCUM]
  * @param {Object} [options.config] - config for Verse.entries
+ * @param {Object} [options.filter] - config for table.find
  * @param {string} [options.dest]
  * @param {string} [options.filename]
  * @param {string} [options.varname]
@@ -35,7 +36,7 @@ const TableChips = options => {
 };
 const tableChips = function () {
   /** @type {Table} */
-  const table = this.table;
+  let table = this.table || this.target[this.prop];
   /** @type {string} */
 
   const key = this.key;
@@ -57,6 +58,7 @@ const tableChips = function () {
   /** @type {string} */
 
   const varname = this.varname || filename;
+  if (filter) table = Table.from(table).find(filter, IMMUTABLE);
   const chips = table.chips({
     key,
     field,
@@ -83,13 +85,13 @@ const tableChips = function () {
  */
 
 const TableLookup = options => {
-  var _tableLookup$bind, _options$key, _options$field;
+  var _tableLookup$bind;
 
-  return _tableLookup$bind = tableLookup.bind(options), Rename(says.roster((_options$key = options === null || options === void 0 ? void 0 : options.key) !== null && _options$key !== void 0 ? _options$key : '') + ' -> ' + says.roster((_options$field = options === null || options === void 0 ? void 0 : options.field) !== null && _options$field !== void 0 ? _options$field : ''))(_tableLookup$bind);
+  return _tableLookup$bind = tableLookup.bind(options), Rename(says.roster(options.key) + ' -> ' + says.roster(options.field))(_tableLookup$bind);
 };
 const tableLookup = function () {
   /** @type {Table} */
-  let table = this.table;
+  let table = this.table || this.target[this.prop];
   /** @type {string} */
 
   const key = this.key;

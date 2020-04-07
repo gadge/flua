@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/gulp-init.test.js"
   },
   "dependencies": {
-    "@palett/says": "^0.1.1",
+    "@palett/says": "^0.1.2",
     "@vect/rename": "^0.2.0"
   },
   "repository": {
