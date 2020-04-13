@@ -1,6 +1,6 @@
 {
   "name": "@flua/utils",
-  "version": "0.2.2",
+  "version": "0.2.5",
   "description": "fs/stream utils",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
