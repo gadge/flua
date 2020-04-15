@@ -15,9 +15,9 @@
     "test": "node -r @babel/register test/table-gulp.test.js"
   },
   "dependencies": {
-    "@analys/enum-mutabilities": "^0.2.1",
-    "@analys/enum-pivot-mode": "^0.2.1",
-    "@analys/table": "^0.2.1",
+    "@analys/enum-mutabilities": "^0.2.4",
+    "@analys/enum-pivot-mode": "^0.2.4",
+    "@analys/table": "^0.2.4",
     "@flua/utils": "^0.2.5",
     "@flua/vinylize": "^0.2.5",
     "@palett/says": "^0.1.3",
