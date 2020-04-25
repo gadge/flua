@@ -1,6 +1,6 @@
 {
   "name": "@flua/dynamic-import",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Dynamic import things",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
