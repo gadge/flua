@@ -1,14 +1,14 @@
-import gulp from 'gulp'
-import pluralize from 'pluralize'
-import { Vinylize } from '@flua/vinylize'
-import { esvar } from '@flua/utils'
-import { ACCUM } from '@analys/enum-pivot-mode'
-import { Verse } from '@spare/verse'
+import { IMMUTABLE }     from '@analys/enum-mutabilities'
+import { ACCUM }         from '@analys/enum-pivot-mode'
+import { Table }         from '@analys/table'
+import { esvar }         from '@flua/utils'
+import { Vinylize }      from '@flua/vinylize'
+import { says }          from '@palett/says'
 import { snakeToPascal } from '@spare/phrasing'
-import { Rename } from '@vect/rename'
-import { says } from '@palett/says'
-import { Table } from '@analys/table'
-import { IMMUTABLE } from '@analys/enum-mutabilities'
+import { Verse }         from '@spare/verse'
+import { Rename }        from '@vect/rename'
+import gulp              from 'gulp'
+import pluralize         from 'pluralize'
 
 /**
  * @typedef {number|string} str
@@ -40,6 +40,7 @@ export const tableChips = function () {
   /** @type {string} */ const field = this.field
   /** @type {number} */ const mode = this.mode || ACCUM
   /** @type {Object} */ const config = this.config || {}
+  /** @type {Object} */ const filter = this.filter
   /** @type {string} */ const dest = this.dest
   /** @type {string} */ const filename = this.filename || snakeToPascal(`${key}-to-${pluralize(field)}`)
   /** @type {string} */ const varname = this.varname || filename
