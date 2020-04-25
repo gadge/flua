@@ -4,17 +4,17 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
+var enumMutabilities = require('@analys/enum-mutabilities');
+var enumPivotMode = require('@analys/enum-pivot-mode');
+var table = require('@analys/table');
+var utils = require('@flua/utils');
+var vinylize = require('@flua/vinylize');
+var says = require('@palett/says');
+var phrasing = require('@spare/phrasing');
+var verse = require('@spare/verse');
+var rename = require('@vect/rename');
 var gulp = _interopDefault(require('gulp'));
 var pluralize = _interopDefault(require('pluralize'));
-var vinylize = require('@flua/vinylize');
-var utils = require('@flua/utils');
-var enumPivotMode = require('@analys/enum-pivot-mode');
-var verse = require('@spare/verse');
-var phrasing = require('@spare/phrasing');
-var rename = require('@vect/rename');
-var says = require('@palett/says');
-var table = require('@analys/table');
-var enumMutabilities = require('@analys/enum-mutabilities');
 
 /**
  * @typedef {number|string} str
@@ -57,6 +57,9 @@ const tableChips = function () {
   /** @type {Object} */
 
   const config = this.config || {};
+  /** @type {Object} */
+
+  const filter = this.filter;
   /** @type {string} */
 
   const dest = this.dest;
@@ -111,7 +114,7 @@ const tableLookup = function () {
   /** @type {Object} */
 
   const config = this.config || {};
-  /** @type {string} */
+  /** @type {Object} */
 
   const filter = this.filter;
   /** @type {string} */

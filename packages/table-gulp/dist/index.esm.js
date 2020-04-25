@@ -1,14 +1,14 @@
+import { IMMUTABLE } from '@analys/enum-mutabilities';
+import { ACCUM } from '@analys/enum-pivot-mode';
+import { Table } from '@analys/table';
+import { esvar } from '@flua/utils';
+import { Vinylize } from '@flua/vinylize';
+import { says } from '@palett/says';
+import { snakeToPascal } from '@spare/phrasing';
+import { Verse } from '@spare/verse';
+import { Rename } from '@vect/rename';
 import gulp from 'gulp';
 import pluralize from 'pluralize';
-import { Vinylize } from '@flua/vinylize';
-import { esvar } from '@flua/utils';
-import { ACCUM } from '@analys/enum-pivot-mode';
-import { Verse } from '@spare/verse';
-import { snakeToPascal } from '@spare/phrasing';
-import { Rename } from '@vect/rename';
-import { says } from '@palett/says';
-import { Table } from '@analys/table';
-import { IMMUTABLE } from '@analys/enum-mutabilities';
 
 /**
  * @typedef {number|string} str
@@ -51,6 +51,9 @@ const tableChips = function () {
   /** @type {Object} */
 
   const config = this.config || {};
+  /** @type {Object} */
+
+  const filter = this.filter;
   /** @type {string} */
 
   const dest = this.dest;
@@ -105,7 +108,7 @@ const tableLookup = function () {
   /** @type {Object} */
 
   const config = this.config || {};
-  /** @type {string} */
+  /** @type {Object} */
 
   const filter = this.filter;
   /** @type {string} */
