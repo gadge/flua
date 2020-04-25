@@ -24,7 +24,7 @@
 [url-pp]: https://packagephobia.now.sh/result?p=@flua/target-gulp
 [url-github]: https://github.com/hoyeungw/flua
 
-##### Swap 2 elements of array by input indexes
+##### Easy manipulate table on gulp
 
 #### Features
 - Swap elements of array at a pair of given index
