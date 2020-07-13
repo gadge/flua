@@ -1,12 +1,12 @@
-import gulp from 'gulp'
-import { esvar } from '@flua/utils'
-import { Vinylize } from '@flua/vinylize'
-import { Verse } from '@spare/verse'
+import { IMMUTABLE }     from '@analys/enum-mutabilities'
+import { Table }         from '@analys/table'
+import { esvar }         from '@flua/utils'
+import { Vinylize }      from '@flua/vinylize'
+import { ros }           from '@palett/says'
 import { snakeToPascal } from '@spare/phrasing'
-import { Rename } from '@vect/rename'
-import { says } from '@palett/says'
-import { Table } from '@analys/table'
-import { IMMUTABLE } from '@analys/enum-mutabilities'
+import { Verse }         from '@spare/verse'
+import { Rename }        from '@vect/rename'
+import gulp              from 'gulp'
 
 /**
  *
@@ -26,7 +26,7 @@ import { IMMUTABLE } from '@analys/enum-mutabilities'
 export const TableLookup = (options) => {
   return tableLookup
     .bind(options)
-    |> Rename(says.roster(options.key) + ' -> ' + says.roster(options.field))
+    |> Rename(ros(options.key) + ' -> ' + ros(options.field))
 }
 
 export const tableLookup = function () {
@@ -36,7 +36,7 @@ export const tableLookup = function () {
   /** @type {Object} */ const config = this.config || {}
   /** @type {Object} */ const filter = this.filter
   /** @type {string} */ const dest = this.dest
-  /** @type {string} */ const filename = this.filename || snakeToPascal(`${key}-to-${field}`)
+  /** @type {string} */ const filename = this.filename || snakeToPascal(`${ key }-to-${ field }`)
   /** @type {string} */ const varname = this.varname || filename
 
   if (filter) table = Table.from(table).find(filter, IMMUTABLE)

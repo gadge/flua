@@ -40,7 +40,7 @@ var pluralize = _interopDefault(require('pluralize'));
 const TableChips = options => {
   var _tableChips$bind;
 
-  return _tableChips$bind = tableChips.bind(options), rename.Rename(says.says.roster(options.key) + ' -> ' + says.says.roster(options.field))(_tableChips$bind);
+  return _tableChips$bind = tableChips.bind(options), rename.Rename(says.ros(options.key) + ' -> ' + says.ros(options.field))(_tableChips$bind);
 };
 const tableChips = function () {
   /** @type {Table} */
@@ -100,7 +100,7 @@ const tableChips = function () {
 const TableLookup = options => {
   var _tableLookup$bind;
 
-  return _tableLookup$bind = tableLookup.bind(options), rename.Rename(says.says.roster(options.key) + ' -> ' + says.says.roster(options.field))(_tableLookup$bind);
+  return _tableLookup$bind = tableLookup.bind(options), rename.Rename(says.ros(options.key) + ' -> ' + says.ros(options.field))(_tableLookup$bind);
 };
 const tableLookup = function () {
   /** @type {Table} */

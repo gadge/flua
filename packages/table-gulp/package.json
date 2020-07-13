@@ -20,9 +20,9 @@
     "@analys/table": "^0.3.0",
     "@flua/utils": "^0.2.8",
     "@flua/vinylize": "^0.2.8",
-    "@palett/says": "^0.1.4",
-    "@spare/phrasing": "^0.5.0",
-    "@spare/verse": "^0.5.0",
+    "@palett/says": "^0.4.2",
+    "@spare/phrasing": "^0.8.0",
+    "@spare/verse": "^0.8.0",
     "@vect/rename": "^0.2.3",
     "gulp": "^4.0.2",
     "pluralize": "^8.0.0"

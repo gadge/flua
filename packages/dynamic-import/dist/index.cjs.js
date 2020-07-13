@@ -21,8 +21,8 @@ function _interopNamespace(e) {
   }
 }
 
-var rename = require('@vect/rename');
 var says = require('@palett/says');
+var rename = require('@vect/rename');
 
 const DynamicImport = ({
   target,
@@ -33,8 +33,8 @@ const DynamicImport = ({
   var _ref;
 
   return _ref = async () => {
-    target[name !== null && name !== void 0 ? name : prop] = await new Promise(function (resolve) { resolve(_interopNamespace(require(src))); }).then(o => o[prop]);
-  }, rename.Rename(`dynamic import { ${says.says.roster(prop)} } from '${src}'`)(_ref);
+    target[name !== null && name !== void 0 ? name : prop] = await Promise.resolve().then(function () { return _interopNamespace(require(src)); }).then(o => o[prop]);
+  }, rename.Rename(`dynamic import { ${says.ros(prop)} } from '${src}'`)(_ref);
 };
 const DynamicAssign = ({
   target,
@@ -47,9 +47,9 @@ const DynamicAssign = ({
   return _ref2 = async () => {
     var _target$name;
 
-    const source = prop ? await new Promise(function (resolve) { resolve(_interopNamespace(require(src))); }).then(o => o[prop]) : await new Promise(function (resolve) { resolve(_interopNamespace(require(src))); });
+    const source = prop ? await Promise.resolve().then(function () { return _interopNamespace(require(src)); }).then(o => o[prop]) : await Promise.resolve().then(function () { return _interopNamespace(require(src)); });
     return name ? Object.assign(target[name] = (_target$name = target[name]) !== null && _target$name !== void 0 ? _target$name : {}, source) : Object.assign(target, source);
-  }, rename.Rename(`dynamic import { ${says.says.roster(prop)} } from '${src}'`)(_ref2);
+  }, rename.Rename(`dynamic import { ${says.ros(prop)} } from '${src}'`)(_ref2);
 };
 
 exports.DynamicAssign = DynamicAssign;

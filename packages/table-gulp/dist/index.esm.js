@@ -3,7 +3,7 @@ import { ACCUM } from '@analys/enum-pivot-mode';
 import { Table } from '@analys/table';
 import { esvar } from '@flua/utils';
 import { Vinylize } from '@flua/vinylize';
-import { says } from '@palett/says';
+import { ros } from '@palett/says';
 import { snakeToPascal } from '@spare/phrasing';
 import { Verse } from '@spare/verse';
 import { Rename } from '@vect/rename';
@@ -34,7 +34,7 @@ import pluralize from 'pluralize';
 const TableChips = options => {
   var _tableChips$bind;
 
-  return _tableChips$bind = tableChips.bind(options), Rename(says.roster(options.key) + ' -> ' + says.roster(options.field))(_tableChips$bind);
+  return _tableChips$bind = tableChips.bind(options), Rename(ros(options.key) + ' -> ' + ros(options.field))(_tableChips$bind);
 };
 const tableChips = function () {
   /** @type {Table} */
@@ -94,7 +94,7 @@ const tableChips = function () {
 const TableLookup = options => {
   var _tableLookup$bind;
 
-  return _tableLookup$bind = tableLookup.bind(options), Rename(says.roster(options.key) + ' -> ' + says.roster(options.field))(_tableLookup$bind);
+  return _tableLookup$bind = tableLookup.bind(options), Rename(ros(options.key) + ' -> ' + ros(options.field))(_tableLookup$bind);
 };
 const tableLookup = function () {
   /** @type {Table} */

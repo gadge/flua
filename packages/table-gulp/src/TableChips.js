@@ -3,7 +3,7 @@ import { ACCUM }         from '@analys/enum-pivot-mode'
 import { Table }         from '@analys/table'
 import { esvar }         from '@flua/utils'
 import { Vinylize }      from '@flua/vinylize'
-import { says }          from '@palett/says'
+import { ros }           from '@palett/says'
 import { snakeToPascal } from '@spare/phrasing'
 import { Verse }         from '@spare/verse'
 import { Rename }        from '@vect/rename'
@@ -32,7 +32,7 @@ import pluralize         from 'pluralize'
  */
 export const TableChips = (options) =>
   tableChips.bind(options)
-    |> Rename(says.roster(options.key) + ' -> ' + says.roster(options.field))
+    |> Rename(ros(options.key) + ' -> ' + ros(options.field))
 
 export const tableChips = function () {
   /** @type {Table} */  let table = this.table || this.target[this.prop]
@@ -42,7 +42,7 @@ export const tableChips = function () {
   /** @type {Object} */ const config = this.config || {}
   /** @type {Object} */ const filter = this.filter
   /** @type {string} */ const dest = this.dest
-  /** @type {string} */ const filename = this.filename || snakeToPascal(`${key}-to-${pluralize(field)}`)
+  /** @type {string} */ const filename = this.filename || snakeToPascal(`${ key }-to-${ pluralize(field) }`)
   /** @type {string} */ const varname = this.varname || filename
 
   if (filter) table = Table.from(table).find(filter, IMMUTABLE)
