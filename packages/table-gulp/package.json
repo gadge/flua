@@ -1,6 +1,6 @@
 {
   "name": "@flua/table-gulp",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "Swap values at a pair of indexes",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -18,8 +18,8 @@
     "@analys/enum-mutabilities": "^0.3.0",
     "@analys/enum-pivot-mode": "^0.3.0",
     "@analys/table": "^0.3.0",
-    "@flua/utils": "^0.2.8",
-    "@flua/vinylize": "^0.2.8",
+    "@flua/utils": "^0.2.9",
+    "@flua/vinylize": "^0.2.9",
     "@palett/says": "^0.4.2",
     "@spare/phrasing": "^0.8.0",
     "@spare/verse": "^0.8.0",
