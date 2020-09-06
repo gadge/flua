@@ -15,9 +15,9 @@
     "test": "node -r @babel/register test/vinylize.test.js"
   },
   "dependencies": {
-    "@palett/says": "^0.4.2",
-    "@spare/deco": "^0.8.0",
-    "@vect/rename": "^0.2.3",
+    "@palett/says": "^0.4.5",
+    "@spare/deco": "^0.9.3",
+    "@vect/rename": "^0.2.9",
     "del": "^5.1.0"
   },
   "repository": {

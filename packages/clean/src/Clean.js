@@ -1,8 +1,8 @@
-import del from 'del'
+import { ros }    from '@palett/says'
+import { deco }   from '@spare/deco'
 import { Rename } from '@vect/rename'
-import { says } from '@palett/says'
-import { deco } from '@spare/deco'
+import del        from 'del'
 
 export const Clean = (...patterns) =>
   (async () => await del(patterns))
-    |> Rename(says.roster('clean') + ' ' + (patterns |> deco))
+    |> Rename(ros('clean') + ' ' + (patterns |> deco))

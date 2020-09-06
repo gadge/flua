@@ -35,15 +35,22 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
+/**
+ * stream is an instance of Transform
+ * stream.Transform extends stream.Duplex, which extends stream.Readable and implement stream.Writable
+ * according to stream from module:stream.internal
+ */
+
 class WritableVinyl {
-  /** @property {WritableStream} */
+  /** @property {Transform} */
+  //
   constructor(filename) {
     _defineProperty(this, "stream", void 0);
 
     this.filename = filename;
     this.stream = source(filename);
   }
-  /** @return {WritableVinyl} */
+  /** @return {Transform} */
 
 
   p(content) {
@@ -52,6 +59,12 @@ class WritableVinyl {
 
   pipe(fn) {
     return this.rest().pipe(fn);
+  }
+
+  asyncPipe(fn) {
+    return new Promise((pass, veto) => {
+      return this.rest().pipe(fn).on('end', pass).on('error', veto);
+    });
   }
 
   rest() {

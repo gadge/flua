@@ -2,22 +2,26 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+var source = require('vinyl-source-stream');
+var vinylBuffer = require('vinyl-buffer');
+var size = require('gulp-size');
 
-var source = _interopDefault(require('vinyl-source-stream'));
-var vinylBuffer = _interopDefault(require('vinyl-buffer'));
-var size = _interopDefault(require('gulp-size'));
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+var source__default = /*#__PURE__*/_interopDefaultLegacy(source);
+var vinylBuffer__default = /*#__PURE__*/_interopDefaultLegacy(vinylBuffer);
+var size__default = /*#__PURE__*/_interopDefaultLegacy(size);
 
 const makeVinyl = function (...contents) {
   const {
     filename
   } = this;
-  const stream = source(filename);
+  const stream = source__default['default'](filename);
 
   for (let element of contents) stream.write(element);
 
   stream.end();
-  return stream.pipe(vinylBuffer()).pipe(size({
+  return stream.pipe(vinylBuffer__default['default']()).pipe(size__default['default']({
     title: filename
   }));
 };
@@ -41,15 +45,22 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
+/**
+ * stream is an instance of Transform
+ * stream.Transform extends stream.Duplex, which extends stream.Readable and implement stream.Writable
+ * according to stream from module:stream.internal
+ */
+
 class WritableVinyl {
-  /** @property {WritableStream} */
+  /** @property {Transform} */
+  //
   constructor(filename) {
     _defineProperty(this, "stream", void 0);
 
     this.filename = filename;
-    this.stream = source(filename);
+    this.stream = source__default['default'](filename);
   }
-  /** @return {WritableVinyl} */
+  /** @return {Transform} */
 
 
   p(content) {
@@ -60,9 +71,15 @@ class WritableVinyl {
     return this.rest().pipe(fn);
   }
 
+  asyncPipe(fn) {
+    return new Promise((pass, veto) => {
+      return this.rest().pipe(fn).on('end', pass).on('error', veto);
+    });
+  }
+
   rest() {
     this.stream.end();
-    return this.stream.pipe(vinylBuffer()).pipe(size({
+    return this.stream.pipe(vinylBuffer__default['default']()).pipe(size__default['default']({
       title: this.filename
     }));
   }

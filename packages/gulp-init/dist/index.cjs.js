@@ -2,12 +2,15 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
 var rename = require('@vect/rename');
-var gulp = _interopDefault(require('gulp'));
-var tap = _interopDefault(require('gulp-tap'));
+var gulp = require('gulp');
+var tap = require('gulp-tap');
 var tableInit = require('@analys/table-init');
+
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+var gulp__default = /*#__PURE__*/_interopDefaultLegacy(gulp);
+var tap__default = /*#__PURE__*/_interopDefaultLegacy(tap);
 
 const assignTable = function () {
   const {
@@ -15,7 +18,7 @@ const assignTable = function () {
     src,
     filename
   } = this;
-  return gulp.src(src + '/' + filename).pipe(tap(file => {
+  return gulp__default['default'].src(src + '/' + filename).pipe(tap__default['default'](file => {
     var _JSON$parse;
 
     const {
@@ -38,7 +41,7 @@ function assignObject() {
     convert
   } = this;
   src = base ? base + '/' + src : src;
-  return gulp.src(src + '/' + filename).pipe(tap(file => {
+  return gulp__default['default'].src(src + '/' + filename).pipe(tap__default['default'](file => {
     let o = JSON.parse(file.contents);
     if (convert) o = convert(o);
     Object.assign(target, o);

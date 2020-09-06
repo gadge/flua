@@ -2,8 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
 var enumMutabilities = require('@analys/enum-mutabilities');
 var enumPivotMode = require('@analys/enum-pivot-mode');
 var table = require('@analys/table');
@@ -13,8 +11,13 @@ var says = require('@palett/says');
 var phrasing = require('@spare/phrasing');
 var verse = require('@spare/verse');
 var rename = require('@vect/rename');
-var gulp = _interopDefault(require('gulp'));
-var pluralize = _interopDefault(require('pluralize'));
+var gulp = require('gulp');
+var pluralize = require('pluralize');
+
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+var gulp__default = /*#__PURE__*/_interopDefaultLegacy(gulp);
+var pluralize__default = /*#__PURE__*/_interopDefaultLegacy(pluralize);
 
 /**
  * @typedef {number|string} str
@@ -65,7 +68,7 @@ const tableChips = function () {
   const dest = this.dest;
   /** @type {string} */
 
-  const filename = this.filename || phrasing.snakeToPascal(`${key}-to-${pluralize(field)}`);
+  const filename = this.filename || phrasing.snakeToPascal(`${key}-to-${pluralize__default['default'](field)}`);
   /** @type {string} */
 
   const varname = this.varname || filename;
@@ -78,7 +81,7 @@ const tableChips = function () {
   });
   const vinylBuffer = vinylize.Vinylize(filename + '.js').p(utils.esvar(varname)).p(verse.Verse.entries(chips, config));
   return dest // if provided, save to dest/filename. if omitted, return vinyl buffer.
-  ? vinylBuffer.pipe(gulp.dest(dest)) : vinylBuffer.rest();
+  ? vinylBuffer.pipe(gulp__default['default'].dest(dest)) : vinylBuffer.rest();
 };
 
 /**
@@ -129,7 +132,7 @@ const tableLookup = function () {
   if (filter) table$1 = table.Table.from(table$1).find(filter, enumMutabilities.IMMUTABLE);
   const lookups = table$1.lookupTable(key, field, config === null || config === void 0 ? void 0 : config.objectify);
   const vinylBuffer = vinylize.Vinylize(filename + '.js').p(utils.esvar(varname)).p(((config === null || config === void 0 ? void 0 : config.objectify) ? verse.Verse.object : verse.Verse.entries)(lookups, config));
-  return dest ? vinylBuffer.pipe(gulp.dest(dest)) : vinylBuffer.rest();
+  return dest ? vinylBuffer.pipe(gulp__default['default'].dest(dest)) : vinylBuffer.rest();
 };
 
 exports.TableChips = TableChips;
