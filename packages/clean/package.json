@@ -15,10 +15,10 @@
     "test": "node -r @babel/register test/vinylize.test.js"
   },
   "dependencies": {
-    "@palett/says": "^0.4.5",
+    "@ject/rename": "^0.0.12",
+    "@palett/says": "^0.8.15",
     "@spare/deco": "^0.9.3",
-    "@vect/rename": "^0.2.9",
-    "del": "^5.1.0"
+    "del": "^6.0.0"
   },
   "repository": {
     "type": "git",

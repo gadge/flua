@@ -6,7 +6,7 @@ import { Vinylize }      from '@flua/vinylize'
 import { ros }           from '@palett/says'
 import { snakeToPascal } from '@spare/phrasing'
 import { Verse }         from '@spare/verse'
-import { Rename }        from '@vect/rename'
+import { Rename }        from '@ject/rename'
 import gulp              from 'gulp'
 import pluralize         from 'pluralize'
 

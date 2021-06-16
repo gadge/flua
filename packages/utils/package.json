@@ -15,12 +15,12 @@
     "test": "node -r @babel/register test/vinyl-init.test.js"
   },
   "dependencies": {
-    "@palett/cards": "^0.4.5",
-    "@palett/convert": "^0.4.5",
-    "@palett/dye": "^0.4.5",
-    "@valjoux/timeout": "^0.2.0",
-    "@valjoux/timestamp": "^0.2.0",
-    "ora": "^5.0.0"
+    "@palett/cards": "^0.8.15",
+    "@palett/convert": "^0.8.15",
+    "@palett/dye": "^0.8.15",
+    "@valjoux/timeout": "^0.2.11",
+    "@valjoux/timestamp": "^0.2.11",
+    "ora": "^5.4.1"
   },
   "repository": {
     "type": "git",

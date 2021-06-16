@@ -1,4 +1,4 @@
-import { Rename } from '@vect/rename'
+import { Rename } from '@ject/rename'
 import { assignTable } from './functions/assignTable'
 import { assignObject } from './functions/assignObject'
 
