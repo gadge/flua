@@ -2,8 +2,11 @@
   "name": "@flua/utils",
   "version": "0.3.3",
   "description": "fs/stream utils",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
+  "main": "./dist/index.cjs",
+  "exports": {
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.cjs"
+  },
   "files": [
     "dist"
   ],
@@ -15,12 +18,12 @@
     "test": "node -r @babel/register test/vinyl-init.test.js"
   },
   "dependencies": {
-    "@palett/cards": "^0.8.16",
-    "@palett/convert": "^0.8.16",
-    "@palett/dye": "^0.8.16",
-    "@valjoux/timeout": "^0.3.7",
-    "@valjoux/timestamp": "^0.3.7",
-    "ora": "^5.4.1"
+    "@palett/cards": "^0.9.11",
+    "@palett/convert": "^0.9.11",
+    "@palett/dye": "^0.9.11",
+    "@valjoux/timeout": "^0.3.13",
+    "@valjoux/timestamp": "^0.3.13",
+    "ora": "^6.1.0"
   },
   "repository": {
     "type": "git",

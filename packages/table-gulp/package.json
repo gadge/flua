@@ -2,8 +2,11 @@
   "name": "@flua/table-gulp",
   "version": "0.3.3",
   "description": "Swap values at a pair of indexes",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
+  "main": "./dist/index.cjs",
+  "exports": {
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.cjs"
+  },
   "files": [
     "dist"
   ],
@@ -15,15 +18,15 @@
     "test": "node -r @babel/register test/table-gulp.test.js"
   },
   "dependencies": {
-    "@analys/enum-mutabilities": "^0.5.2",
-    "@analys/enum-pivot-mode": "^0.5.2",
-    "@analys/table": "^0.5.2",
+    "@analys/enum-mutabilities": "^0.6.14",
+    "@analys/enum-pivot-mode": "^0.6.14",
+    "@analys/table": "^0.6.14",
     "@flua/utils": "^0.3.3",
     "@flua/vinylize": "^0.3.3",
-    "@ject/rename": "^0.0.16",
-    "@palett/says": "^0.8.16",
-    "@spare/phrasing": "^0.11.22",
-    "@spare/verse": "^0.11.22",
+    "@ject/rename": "^0.0.17",
+    "@palett/says": "^0.9.10",
+    "@spare/phrasing": "^0.14.3",
+    "@spare/verse": "^0.14.3",
     "gulp": "^4.0.2",
     "pluralize": "^8.0.0"
   },

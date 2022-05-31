@@ -2,8 +2,11 @@
   "name": "@flua/gulp-init",
   "version": "0.3.3",
   "description": "Swap values at a pair of indexes",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
+  "main": "./dist/index.cjs",
+  "exports": {
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.cjs"
+  },
   "files": [
     "dist"
   ],
@@ -15,8 +18,8 @@
     "test": "node -r @babel/register test/gulp-init.test.js"
   },
   "dependencies": {
-    "@analys/table-init": "^0.5.2",
-    "@ject/rename": "^0.0.16",
+    "@analys/table-init": "^0.6.14",
+    "@ject/rename": "^0.0.17",
     "gulp": "^4.0.2",
     "gulp-tap": "^2.0.0"
   },

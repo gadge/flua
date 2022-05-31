@@ -2,8 +2,11 @@
   "name": "@flua/clean",
   "version": "0.3.3",
   "description": "Wrap 'del' for gulp use",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
+  "main": "./dist/index.cjs",
+  "exports": {
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.cjs"
+  },
   "files": [
     "dist"
   ],
@@ -15,10 +18,10 @@
     "test": "node -r @babel/register test/vinylize.test.js"
   },
   "dependencies": {
-    "@ject/rename": "^0.0.16",
-    "@palett/says": "^0.8.16",
-    "@spare/deco": "^0.11.22",
-    "del": "^6.0.0"
+    "@ject/rename": "^0.0.17",
+    "@spare/logger": "^0.14.3",
+    "@spare/says": "^0.14.3",
+    "del": "^6.1.1"
   },
   "repository": {
     "type": "git",

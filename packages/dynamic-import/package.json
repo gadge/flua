@@ -2,8 +2,11 @@
   "name": "@flua/dynamic-import",
   "version": "0.3.3",
   "description": "Dynamic import things",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
+  "main": "./dist/index.cjs",
+  "exports": {
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.cjs"
+  },
   "files": [
     "dist"
   ],
@@ -15,8 +18,8 @@
     "test": "node -r @babel/register test/gulp-init.test.js"
   },
   "dependencies": {
-    "@ject/rename": "^0.0.16",
-    "@palett/says": "^0.8.16"
+    "@ject/rename": "^0.0.17",
+    "@palett/says": "^0.9.10"
   },
   "repository": {
     "type": "git",

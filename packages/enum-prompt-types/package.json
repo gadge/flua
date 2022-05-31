@@ -2,8 +2,11 @@
   "name": "@flua/enum-prompt-types",
   "version": "0.3.3",
   "description": "Enums for prompt types",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
+  "main": "./dist/index.cjs",
+  "exports": {
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.cjs"
+  },
   "files": [
     "dist"
   ],
