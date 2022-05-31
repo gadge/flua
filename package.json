@@ -25,7 +25,6 @@
     "@foba/crostab": "^0.5.7",
     "@foba/foo": "^0.5.7",
     "@foba/table": "^0.5.7",
-    "@palett/says": "0.9.10",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-json": "^4.1.0",

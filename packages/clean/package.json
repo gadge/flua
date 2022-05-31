@@ -20,7 +20,7 @@
   "dependencies": {
     "@ject/rename": "^0.0.17",
     "@spare/logger": "^0.14.3",
-    "@spare/says": "^0.14.3",
+    "@spare/xr": "^0.14.3",
     "del": "^6.1.1"
   },
   "repository": {

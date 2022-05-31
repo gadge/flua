@@ -1,5 +1,5 @@
 import { deco, delogger, xr } from '@spare/logger'
-import { says } from '@palett/says'
+import { says } from '@spare/xr'
 
 export function testable (isTestable) {
   return function (target) {

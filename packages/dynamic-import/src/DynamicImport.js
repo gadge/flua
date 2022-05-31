@@ -1,5 +1,5 @@
 import { Rename } from '@ject/rename'
-import { ros }    from '@palett/says'
+import { ros }    from '@spare/xr'
 
 export const DynamicImport = ({ target, src, prop, name }) => {
   return ( async () => {

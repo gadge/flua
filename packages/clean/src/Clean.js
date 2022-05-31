@@ -1,5 +1,5 @@
 import { Rename } from '@ject/rename'
-import { ros }    from '@spare/says'
+import { ros }    from '@spare/xr'
 import { deco }   from '@spare/logger'
 import del        from 'del'
 

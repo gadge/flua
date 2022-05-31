@@ -23,7 +23,7 @@
     "@palett/dye": "^0.9.11",
     "@valjoux/timeout": "^0.3.13",
     "@valjoux/timestamp": "^0.3.13",
-    "ora": "^6.1.0"
+    "ora": "^5.4.1"
   },
   "repository": {
     "type": "git",

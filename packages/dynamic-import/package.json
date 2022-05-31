@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@ject/rename": "^0.0.17",
-    "@palett/says": "^0.9.10"
+    "@spare/xr": "^0.14.3"
   },
   "repository": {
     "type": "git",

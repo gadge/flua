@@ -1,6 +1,6 @@
 import { Clean }    from '@flua/clean'
 import { esvar }    from '@flua/utils'
-import { says }     from '@palett/says'
+import { says }     from '@spare/xr'
 import { deco }     from '@spare/logger'
 import { Verse }    from '@spare/verse'
 import gulp         from 'gulp'
