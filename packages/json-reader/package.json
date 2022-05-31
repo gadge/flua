@@ -1,6 +1,6 @@
 {
   "name": "@flua/json-reader",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Async load object from file",
   "main": "./dist/index.cjs",
   "exports": {
