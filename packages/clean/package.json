@@ -1,6 +1,6 @@
 {
   "name": "@flua/clean",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Wrap 'del' for gulp use",
   "main": "./dist/index.cjs",
   "exports": {
