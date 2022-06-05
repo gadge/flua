@@ -24,9 +24,9 @@
     "@flua/utils": "^0.3.5",
     "@flua/vinylize": "^0.3.5",
     "@ject/rename": "^0.0.17",
-    "@spare/phrasing": "^0.14.3",
-    "@spare/verse": "^0.14.3",
-    "@spare/xr": "^0.14.3",
+    "@spare/phrasing": "^0.14.5",
+    "@spare/verse": "^0.14.5",
+    "@spare/xr": "^0.14.5",
     "gulp": "^4.0.2",
     "pluralize": "^8.0.0"
   },
