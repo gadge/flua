@@ -1,6 +1,6 @@
 {
   "name": "@flua/utils",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "description": "fs/stream utils",
   "main": "./dist/index.cjs",
   "exports": {
