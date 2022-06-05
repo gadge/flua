@@ -1,6 +1,6 @@
 {
   "name": "@flua/enum-prompt-types",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Enums for prompt types",
   "main": "./dist/index.cjs",
   "exports": {
